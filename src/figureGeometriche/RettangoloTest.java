@@ -21,17 +21,15 @@ public class RettangoloTest {
         
         Rettangolo rettangolo = new Rettangolo (base,altezza);
         
-        altezza = rettangolo.altezza;
-        base = rettangolo.base;
-        area = rettangolo.areaRettangolo();
+        altezza =   rettangolo.altezza;
+        base =      rettangolo.base;
+        area =      rettangolo.areaRettangolo();
         perimetro = rettangolo.perimetroRettangolo();
-        
-        System.out.println("Base: " + base);
-        System.out.println("Altezza: " + altezza);
-        System.out.println("Perimetro del rettangolo: " + perimetro);
-        System.out.println("Area del rettangolo: " + area);
-        
-   
+         
+        System.out.printf("Base                    : %.2f\n ", base);
+        System.out.printf("Altezza                 : %.2f\n ", altezza);
+        System.out.printf("Perimetro del rettangolo: %.2f\n ", perimetro);
+        System.out.printf("Area del rettangolo     : %.2f\n ", area);
     }
     
 }
