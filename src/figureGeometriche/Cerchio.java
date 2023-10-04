@@ -14,7 +14,7 @@ public class Cerchio {
         return area;    
     }
     
-    public float circonferenzaCerchio(){
+    public float circonferenzaCerchio(){ // funzione per calcolare la circonferenza
         float circonferenza;
         circonferenza = 2*3.14f*raggio;
         return circonferenza;
