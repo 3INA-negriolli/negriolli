@@ -2,36 +2,41 @@ package figureGeometriche;
 
 
 public class TriangoloScaleno {
-    public float lato1;
-    public float lato2;
-    public float lato3;
-    public float semiperimetro;
-    public float perimetro;
+    public double lato1;
+    public double lato2;
+    public double lato3;
     
-    public TriangoloScaleno(float lato1, float lato2, float lato3){
+    
+    public TriangoloScaleno(double lato1, double lato2, double lato3){
         this.lato1 = lato1;
         this.lato2 = lato2;
         this.lato3 = lato3;
-        this.semiperimetro = semiperimetro;
-        this.perimetro = perimetro;
     }
     
-    public float perimetroTriangolo() {
-        float perimetro;
+    public double perimetroTriangolo() {
+        double perimetro;
         perimetro = lato1+lato2+lato3;
         return perimetro;
     }
     
-    public float semiperimetroTriangolo() {
-        float semiperimetro;
-        semiperimetro = perimetro/2;
+    public double semiperimetroTriangolo() {
+        double p = perimetroTriangolo();
+        double semiperimetro;
+        semiperimetro = p/2;
         return semiperimetro;
     }
     
-    public float areaTriangolo() {
-        float area;
-        area = semiperimetro*(semiperimetro - lato1)*(semiperimetro - lato2)*(semiperimetro - lato3);
+    public double areaTriangolo() {
+        double sp = semiperimetroTriangolo();
+        double area;
+        area = Math.sqrt ((sp*(sp - lato1)*(sp - lato2)*(sp - lato3)));
         return area;
+    }
+    public double altezzaTriangolo() {
+        double altezza;
+        double a = areaTriangolo(); 
+        altezza = (a*2)/lato1;
+        return altezza;
     }
     
      
