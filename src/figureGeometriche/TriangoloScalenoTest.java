@@ -8,12 +8,7 @@ public class TriangoloScalenoTest {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         
-        double lato1;
-        double lato2;
-        double lato3;
-        double area;
-        double altezza;
-        double perimetro;
+        double lato1, lato2, lato3;
         
         System.out.print("Inserire il valore del primo lato  : ");
         lato1 = in.nextDouble();
@@ -26,19 +21,13 @@ public class TriangoloScalenoTest {
         
         TriangoloScaleno triangoloS = new TriangoloScaleno(lato1,lato2,lato3);
         
-        lato1     = triangoloS.lato1;
-        lato2     = triangoloS.lato2;
-        lato3     = triangoloS.lato3;
-        area      = triangoloS.areaTriangolo();
-        altezza   = triangoloS.altezzaTriangolo();
-        perimetro = triangoloS.perimetroTriangolo();
-        
-        System.out.println("Primo lato         : " + lato1);
-        System.out.println("Secondo lato       : " + lato2);
-        System.out.println("Terzo lato         : " + lato3);
-        System.out.println("Area triangolo     : " + area);
-        System.out.println("Perimetro triangolo: " + perimetro);
-        System.out.println("Altezza            : " + altezza);
+        System.out.println("Dati in input: ");
+        System.out.print(triangoloS.info());
+       
+        System.out.println("Dati di output: ");
+        System.out.println("Area triangolo: " + triangoloS.areaTriangolo());
+        System.out.println("Perimetro triangolo: " + triangoloS.perimetroTriangolo());
+        System.out.println("Altezza: "            + triangoloS.altezzaTriangolo());
         
     }
     

@@ -8,6 +8,14 @@ public class Cerchio {
         this.raggio = raggio;
     }
     
+    public float getRaggio(){
+        return raggio;
+    }
+    
+    public void setRaggio(float raggio){
+        this.raggio = raggio;
+    }
+    
     public float areaCerchio(){
         float area;
         area = 3.14f*(raggio*raggio);
@@ -18,6 +26,14 @@ public class Cerchio {
         float circonferenza;
         circonferenza = 2*3.14f*raggio;
         return circonferenza;
+    }
+    
+    public String info(){
+        String testo;
+        
+        testo = "Raggio: " + raggio;
+        
+        return testo;
     }
     
 }

@@ -4,8 +4,16 @@ package figureGeometriche;
 public class Quadrato {
     public float l;
     
-    public Quadrato (float lato) {
-        l = lato;
+    public Quadrato (float l) {
+        this.l = l;
+    }
+    
+    public float getL(){
+        return l;
+    }
+    
+    public void setL(){
+        this.l = l;
     }
     
     public float calcolaArea (){
@@ -19,4 +27,13 @@ public class Quadrato {
         perimetro = l+l+l+l;
         return perimetro;
     }
+    
+    public String info(){
+        String testo;
+        
+        testo = "Lato: " + l;
+        
+        return testo;
+    }
+    
  }

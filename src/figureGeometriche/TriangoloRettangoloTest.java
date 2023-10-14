@@ -22,7 +22,7 @@ public class TriangoloRettangoloTest {
         
         TriangoloRettangolo t = new TriangoloRettangolo(b,a,l);
         
-        System.out.print("Dati in input: ");
+        System.out.println("Dati in input: ");
         System.out.print(t.info());
         
         System.out.println("Dati di output: ");

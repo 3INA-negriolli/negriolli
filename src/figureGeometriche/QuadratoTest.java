@@ -8,22 +8,20 @@ public class QuadratoTest {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         
-        float lato;
-        float area;
-        float perimetro;
+        float l;
+        
         
         System.out.print("Inserire il lato: ");
-        lato = in.nextFloat();
+        l = in.nextFloat();
         
-        Quadrato quadrato = new Quadrato (lato);
+        Quadrato q = new Quadrato (l);
         
-        lato = quadrato.l;
-        area = quadrato.calcolaArea();
-        perimetro = quadrato.calcolaPerimetro();
+        System.out.println("Dati in input: ");
+        System.out.println(q.info());
         
-        System.out.println("lato: " + lato);
-        System.out.println("area del quadrato: " + area);
-        System.out.println("perimetro del quadrato: " + perimetro);
+        System.out.println("Dati di output: ");
+        System.out.println("Area del quadrato: " + q.calcolaArea());
+        System.out.println("Perimetro del quadrato: " + q.calcolaPerimetro());
     }
     
 }

@@ -20,7 +20,7 @@ public class TriangoloRettangolo {
         this.base = base;
     }
     
-        public double getAltezza(){
+    public double getAltezza(){
         return altezza;
     }
     
@@ -28,7 +28,7 @@ public class TriangoloRettangolo {
         this.altezza = altezza;
     }
     
-        public double getLato(){
+    public double getLato(){
         return lato;
     }
     

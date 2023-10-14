@@ -6,17 +6,41 @@ public class Sottrazione {
     public float n1;
     public float n2;
 
-    public Sottrazione(float numero1,float numero2) {
-        n1 = numero1;
-        n2 = numero2;
-        
-    
+    public Sottrazione(float n1,float n2) {
+        this.n1 = n1;
+        this.n2 = n2;   
 }
+    
+    public float getN1(){
+        return n1;
+    }
+    
+    public void setN1(float n1){
+        this.n1 = n1;
+    }
+    
+    public float getN2(){
+        return n1;
+    }
+    
+    public void setN2(float n2){
+        this.n2 = n2;
+    }
+    
     public float esegui(){
         float sottrazione; 
+        
         sottrazione = n1 - n2;
+        
         return sottrazione;
-
     }
 
+    public String info(){
+        String testo;
+        
+        testo = "primo numero: "   + n1 + "\n"+
+                "secondo numero: " + n2 + "\n";
+        
+        return testo;
+    }
 }

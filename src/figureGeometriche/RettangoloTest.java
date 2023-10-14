@@ -8,10 +8,7 @@ public class RettangoloTest {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         
-        float altezza;
-        float base;
-        float area;
-        float perimetro;
+        float base, altezza;
         
         System.out.print("Inserire la base: ");
         base = in.nextFloat();
@@ -19,17 +16,14 @@ public class RettangoloTest {
         System.out.print("Inserire l'altezza: ");
         altezza = in.nextFloat();
         
-        Rettangolo rettangolo = new Rettangolo (base,altezza);
+        Rettangolo ret = new Rettangolo (base,altezza);
         
-        altezza =   rettangolo.altezza;
-        base =      rettangolo.base;
-        area =      rettangolo.areaRettangolo();
-        perimetro = rettangolo.perimetroRettangolo();
+        System.out.println("Dati in input: ");
+        System.out.println(ret.info());
          
-        System.out.printf("Base                    : %.2f\n ", base);
-        System.out.printf("Altezza                 : %.2f\n ", altezza);
-        System.out.printf("Perimetro del rettangolo: %.2f\n ", perimetro);
-        System.out.printf("Area del rettangolo     : %.2f\n ", area);
+        System.out.printf("Dati di output: \n");
+        System.out.printf("Perimetro del rettangolo: %.2f\n ", ret.perimetroRettangolo());
+        System.out.printf("Area del rettangolo    : %.2f\n " ,  ret.areaRettangolo());
     }
     
 }
