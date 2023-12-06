@@ -9,7 +9,9 @@ package figureGeometriche;
  * @verion 1.0
  */
 public class TriangoloGenerico {
-    public float l1, l2 ,l3;
+    final private float NF_TE;
+    private float l1, l2 ,l3;
+    private String unitaMisura;
 
     /**
      * Costruttore senza parametri <br>
@@ -18,6 +20,8 @@ public class TriangoloGenerico {
      * {@link #setL3(float) }      <br>
      */
     public TriangoloGenerico() {
+        NF_TE = 0.289f;
+        unitaMisura = "";
     }
 
     /**
@@ -28,6 +32,8 @@ public class TriangoloGenerico {
      */
     
     public TriangoloGenerico(float l1, float l2, float l3) {
+        this();
+        
         this.l1 = l1;
         this.l2 = l2;
         this.l3 = l3;
@@ -79,6 +85,14 @@ public class TriangoloGenerico {
      */
     public void setL3(float l3) {
         this.l3 = l3;
+    }
+
+    public String getUnitaMisura() {
+        return unitaMisura;
+    }
+
+    public void setUnitaMisura(String unitaMisura) {
+        this.unitaMisura = unitaMisura;
     }
     
     /**
@@ -172,4 +186,26 @@ public class TriangoloGenerico {
         }   
         return possibile;
     }
+    
+    public float apotema(){
+        float a;
+        //add condizione
+        if(tipo().equals("equilatero"))
+            a = l1 * NF_TE;
+        else
+            a = 0;
+        
+        return a;
+    }  
+    
+    public float altezza(){
+        float altezza = 0;
+        if(tipo().equals("equilatero"))
+            altezza = apotema()*2;
+        else 
+            altezza = 0;
+        
+        return altezza;
+    }
+    
 }
