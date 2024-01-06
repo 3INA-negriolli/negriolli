@@ -15,8 +15,7 @@ public class Calcolatrice {
      * Costruttore senza parametri
      */
     
-    public Calcolatrice(){
-        
+    public Calcolatrice(){ 
     }
     
     /**
