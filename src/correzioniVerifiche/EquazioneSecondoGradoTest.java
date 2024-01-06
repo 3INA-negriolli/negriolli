@@ -18,13 +18,13 @@ public class EquazioneSecondoGradoTest {
         System.out.println("Inserire il valore di c: ");
         c = in.nextFloat();
 
-        EquazioneSecondoGrado e = new EquazioneSecondoGrado(a, b, c);
+        EquazioneSecondoGrado eq = new EquazioneSecondoGrado(a, b, c);
         
-        System.out.println("Dati di input: " + e.info());
+        System.out.println("Dati di input: " + eq.info());
 
-        System.out.println("Il valore del delta è: " + e.delta());
-        System.out.println(e.x1());
-        System.out.println(e.x2());
+        System.out.println("Il valore del delta è: " + eq.delta());
+        System.out.println(eq.x1());
+        System.out.println(eq.x2());
     }
     
 }

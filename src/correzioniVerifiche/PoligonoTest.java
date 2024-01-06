@@ -16,12 +16,12 @@ public class PoligonoTest {
         System.out.println("Inserire il valore della lunghezza del lato: ");
         lunghezza = in.nextFloat(); 
         
-        Poligono p = new Poligono(nLati, lunghezza);
+        Poligono pl = new Poligono(nLati, lunghezza);
         
-        System.out.println("Dati di input: " + p.info());
+        System.out.println("Dati di input: " + pl.info());
         
-        System.out.println(p.isPoligono());
-        System.out.println(p.perimetro());
+        System.out.println(pl.isPoligono());
+        System.out.println(pl.perimetro());
         
     }
     

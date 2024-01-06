@@ -43,7 +43,7 @@ public class Poligono {
 
     /**
      * Modifixca/Imposta il numero dei lati
-     * @param nLati 
+     * @param nLati nLati
      */
     
     public void setNLati(int nLati) {
@@ -61,7 +61,7 @@ public class Poligono {
 
     /**
      * Imposta/Modifica il valore della lunghezza del lato
-     * @param lunghezza 
+     * @param lunghezza lunghezza
      */
     
     public void setLunghezza(float lunghezza) {
