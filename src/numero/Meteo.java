@@ -117,11 +117,75 @@ public class Meteo {
 
     public String Consiglio3() {
         String testo = "";
+        
+        if (temperatura >= 0){
+            if (temperatura > 0){
+                if (temperatura > 5){
+                    if (temperatura > 10){
+                        if (temperatura > 15){
+                            if (temperatura > 20){
+                                if (temperatura > 25){
+                                    testo = "Condizionatore a Manetta!!";
+                                    
+                                }else{
+                                    testo = "Tutti al mare!!";
+                                }
+                            }else{
+                                testo = "Magari!!";
+                            }
+                        }else{
+                            testo = "Solo il maglioncino!";
+                        }
+                    }else{
+                        testo = "Basta il piumino!";
+                    }
+                }else{
+                    testo = "Ci vuole il cappellino!";
+                }
+            }else{
+                testo = "Si va a sciare!";
+            }
+        }else{ 
+            testo = "Attenti al ghiaccio!";
+        
+        }
 
+        return testo;
     }
 
     public String Consiglio4() {
         String testo = "";
+        
+        if (temperatura <= 25){
+            if (temperatura <= 20){
+                if (temperatura <= 15){
+                    if (temperatura <= 10){
+                        if (temperatura <= 5){
+                            if (temperatura <= 0){
+                                if (temperatura == 0){
+                                    testo = "Si va a sciare!!";
+                                    
+                                }else{
+                                    testo = "Attenti al ghiaccio!";
+                                }
+                            }else{
+                                testo = "Ci vuole il Cappellino!!";
+                            }
+                        }else{
+                            testo = "Basta il Piumino";
+                        }
+                    }else{
+                        testo = "Solo il Maglioncino!";
+                    }
+                }else{
+                    testo = "Magari!!!";
+                }
+            }else{
+                testo = "Tutti al mare!!";
+            }
+        }else{
+            testo = "Condizionatore a Manetta!";
+        }
 
         return testo;
 
