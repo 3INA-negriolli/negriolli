@@ -1,5 +1,5 @@
 
-package verificaN2;
+package correzioniVerifiche;
 
 /**
  * Scrivere una classe per la risoluzione di un'equazione di II grado

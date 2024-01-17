@@ -1,5 +1,4 @@
-
-package correzioniVerifiche;
+package cicli;
 
 /**
  * Classe per individuare il tipo di un poligono e il suo perimetro dati in input
@@ -7,7 +6,7 @@ package correzioniVerifiche;
  * @author Luca.Negriolli
  * @version 1.0
  */
-public class Poligono {
+public class Menu {
     
     private int numeroLati;
     private float lato;
@@ -15,7 +14,7 @@ public class Poligono {
     /**
      * classe senza parametri
      */
-    public Poligono (){
+    public Menu (){
         
     }
     /**
@@ -23,7 +22,7 @@ public class Poligono {
      * @param numeroLati
      * @param lato 
      */
-    public Poligono(int numeroLati, float lato) {
+    public Menu(int numeroLati, float lato) {
         this.numeroLati = numeroLati;
         this.lato = lato;
     }
@@ -86,9 +85,6 @@ public class Poligono {
                 break;
             default:
                 tipo = " inserito numero di lati non valido";
-                
-                
-            
         }
         return tipo;
     }

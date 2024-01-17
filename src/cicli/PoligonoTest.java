@@ -1,5 +1,6 @@
-package correzioniVerifiche;
+package cicli;
 
+import correzioniVerifiche.*;
 import java.util.Scanner;
 
 public class PoligonoTest {

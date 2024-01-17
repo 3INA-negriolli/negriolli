@@ -1,4 +1,4 @@
-package verificaN2;
+package correzioniVerifiche;
 
 import java.util.Scanner;
 
