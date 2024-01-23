@@ -2,21 +2,24 @@ package teoria;
 
 /**
  * Classe che calcola la tabellina di un numero inserito in input
+ *
  * @author luca.negriolli 2023 3INA
  * @version 1.0
  */
 public class Tabellina {
+
     private int n;
+    
 
     /**
-     * Costruttore senza parametri 
-     * {@link #setNumero(int)}<br>
+     * Costruttore senza parametri {@link #setNumero(int)}<br>
      */
     public Tabellina() {
     }
 
     /**
      * Costruttore con i parametri
+     *
      * @param n
      */
     public Tabellina(int n) {
@@ -25,6 +28,7 @@ public class Tabellina {
 
     /**
      * Restituisce il valore del numero inserito
+     *
      * @return
      */
     public int getNumero() {
@@ -33,30 +37,47 @@ public class Tabellina {
 
     /**
      * Imposta/ Modifica il valore del numero
-     * @param n 
+     *
+     * @param n
      */
     public void setNumero(int n) {
         this.n = n;
     }
-    
+
     /**
      * Metodo che restituisce la tabellina del numero richiesto in input
-     * @return 
+     *
+     * @return
      */
-    public String tabellina(){
+    public String tabellina() {
         String testo = "";
         int i = 1;
-        int risultato ;
-        while(i<11){
+        int risultato;
+        while (i < 11) {
             risultato = n * i;
-            testo +=  n + "*" + i + " è uguale a " + risultato + "\n";
+            testo += n + "*" + i + " è uguale a " + risultato + "\n";
             i++;
         }
         return testo;
     }
-    
+
+    public String pari() {
+        String ris;
+        int risultato = n;
+        while (risultato > 1) {
+            risultato = risultato - 2;
+        }
+        if (risultato == 1) {
+            ris = "Il numero è Dispari";
+        } else {
+            ris = "Il numero è Pari";
+        }
+        return ris;
+    }
+
     /**
      * Restituisce il valore degli attributi
+     *
      * @return String
      */
     public String info() {

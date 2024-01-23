@@ -15,5 +15,6 @@ public class TabellinaTest {
         Tabellina t1 = new Tabellina(numero);
         
         System.out.println(t1.tabellina());
+        System.out.println(t1.pari());
     }
 }
