@@ -16,5 +16,8 @@ public class TabellinaTest {
         
         System.out.println(t1.tabellina());
         System.out.println(t1.pari());
+        System.out.println(t1.nCifre());
+        System.out.println(t1.fattoriale());
+        
     }
 }

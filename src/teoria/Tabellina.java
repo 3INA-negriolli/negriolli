@@ -9,7 +9,6 @@ package teoria;
 public class Tabellina {
 
     private int n;
-    
 
     /**
      * Costruttore senza parametri {@link #setNumero(int)}<br>
@@ -74,6 +73,45 @@ public class Tabellina {
         }
         return ris;
     }
+    
+    /**
+     * Metodo che restituisce il numero di cifre che compongono il numero stesso
+     * @return 
+     */
+    public String nCifre() {
+        String testo = "";
+        int conta = 0;
+        if (n == 0) {
+            testo = "il numero ha una cifra";
+        } else {
+            while (n != 0) {
+                n = n / 10;
+                conta++;
+            }
+            testo += "Il numero ha " + conta + " cifre";
+
+        }
+        return testo;
+    }
+
+    /**
+     * Metodo che restituisce il fattoriale di un numero
+     *
+     * @return
+     */
+    public String fattoriale() {
+        String testo;
+        int fattoriale = 1;
+        if (n == 0) {
+            fattoriale = 0;
+        } else {
+            for (int i = 1; i < (n + 1); i++) {
+                fattoriale *= i;
+            }
+        }
+        testo = "Il fattoriale di " + n + " è " + fattoriale;
+        return testo;
+    }
 
     /**
      * Restituisce il valore degli attributi
@@ -82,7 +120,7 @@ public class Tabellina {
      */
     public String info() {
         String testo;
-        testo = "il n è: " + n;
+        testo = "Il n è: " + n;
         return testo;
     }
 }
