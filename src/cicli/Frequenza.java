@@ -6,7 +6,7 @@ package cicli;
  *
  * @author luca.negriolli
  */
-public class Gelataio {
+public class Frequenza {
 
     private int gusto1;
     private int gusto2;
@@ -14,10 +14,10 @@ public class Gelataio {
     private int gusto4;
     private int totVendite;
 
-    public Gelataio() {
+    public Frequenza() {
     }
 
-    public Gelataio(int gusto1, int gusto2, int gusto3, int gusto4, int totVendite) {
+    public Frequenza(int gusto1, int gusto2, int gusto3, int gusto4, int totVendite) {
         this.gusto1 = gusto1;
         this.gusto2 = gusto2;
         this.gusto3 = gusto3;
@@ -78,10 +78,10 @@ public class Gelataio {
 
     public String frequenzeRelative(){
         String rit;
-        float freqRel1 = gusto1/totVendite;
-        float freqRel2 = gusto2/totVendite;
-        float freqRel3 = gusto3/totVendite;
-        float freqRel4 = gusto4/totVendite;
+        double freqRel1 =(double)gusto1/totVendite;
+        double freqRel2 =(double)gusto2/totVendite;
+        double freqRel3 =(double)gusto3/totVendite;
+        double freqRel4 =(double)gusto4/totVendite;
         
         rit = "La Frequenza Relativa del Primo Gusto è: " + freqRel1 + "\n" +
               "La Frequenza Relativa del Secondo Gusto è: " + freqRel2 + "\n" +
@@ -93,10 +93,10 @@ public class Gelataio {
     
     public String frequenzePercentuale(){
         String rit;
-        float freqPerc1 = (gusto1/totVendite)*100;
-        float freqPerc2 = (gusto2/totVendite)*100;
-        float freqPerc3 = (gusto3/totVendite)*100;
-        float freqPerc4 = (gusto4/totVendite)*100;
+        double freqPerc1 =(double)(gusto1/totVendite)*100;
+        double freqPerc2 =(double)(gusto2/totVendite)*100;
+        double freqPerc3 =(double)(gusto3/totVendite)*100;
+        double freqPerc4 =(double)(gusto4/totVendite)*100;
         
         rit = "La Frequenza Percentuale del Primo Gusto è: " + freqPerc1 + "%" + "\n" +
               "La Frequenza Percentuale del Secondo Gusto è: " + freqPerc2 + "%" + "\n" +

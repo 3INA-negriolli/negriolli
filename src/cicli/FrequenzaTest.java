@@ -2,12 +2,12 @@ package cicli;
 
 import java.util.Scanner;
 
-public class GelataioTest {
+public class FrequenzaTest {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
 
-        Gelataio g1 = null;
+        Frequenza g1 = null;
         int gusto1;
         int gusto2;
         int gusto3;
@@ -37,7 +37,7 @@ public class GelataioTest {
                     System.out.println("Inserire il numero totale di ghiaccioli venduti");
                     totVendite = in.nextInt();
 
-                    g1 = new Gelataio(gusto1, gusto2, gusto3, gusto4, totVendite);
+                    g1 = new Frequenza(gusto1, gusto2, gusto3, gusto4, totVendite);
                     break;
 
                 case 2:
