@@ -3,7 +3,7 @@ package cicli;
 /**
  * Classe che realizza il gioco del SuperEnalotto
  *
- * @author Luca.Negriolli 3INA 2023
+ * @author Luca.Negriolli 3INA 2024
  * @version 1.0
  */
 public class SuperEnalotto {
