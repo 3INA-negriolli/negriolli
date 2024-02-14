@@ -55,9 +55,9 @@ public class Quadrati {
         int contatore = numero;
         int quadrato;
         while (contatore > 1) {
-            contatore--;
             quadrato = contatore * contatore;
             testo += contatore + "\t" + quadrato + "\n";
+            contatore--;
         }
         return testo;
     }
@@ -71,10 +71,10 @@ public class Quadrati {
         String testo = "Numeri" + "\t" + "Quadrato" + "\n";
         int contatore = numero;
         int quadrato;
-        while (contatore < 20) {
-            contatore++;
+        while (contatore < 20) {           
             quadrato = contatore * contatore;
             testo += contatore + "\t" + quadrato + "\n";
+            contatore++;
         }
         return testo;
     }
