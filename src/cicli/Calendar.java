@@ -8,14 +8,20 @@ public class Calendar {
 
     static String Zellercongruence(int day, int month, int year) {
         String rit="";
-        if (month == 1) {
+        if(month < 3 && month > 0){
+            month += 12;
+            year--;
+        }
+        
+       /* if (month == 1) {
             month = 13;
             year--;
         }
         if (month == 2) {
             month = 14;
             year--;
-        }
+        }*/   
+       
         int q = day;
         int m = month;
         int k = year % 100;

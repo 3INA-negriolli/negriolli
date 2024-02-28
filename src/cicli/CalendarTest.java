@@ -19,7 +19,7 @@ public class CalendarTest {
         System.out.println("Insert the year: ");
         year = in.nextInt();
         
-        System.out.println("Here the day:" + Calendar.Zellercongruence(day, month, year) );
+        System.out.println("Here the day: " + Calendar.Zellercongruence(day, month, year) );
     }
     
 }
