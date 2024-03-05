@@ -11,14 +11,26 @@ public class Data {
     private int a;
     private int m;
     private int g;
-
+    private int giorno;
+    private int mese;
+    private int anno;
+    private int giorno1;
+    private int mese1;
+    private int anno1;
+    
     public Data() {
     }
 
-    public Data(int a, int m, int g) {
+    public Data(int a, int m, int g, int giorno, int mese, int anno, int giorno1, int mese1, int anno1) {
         this.a = a;
         this.m = m;
         this.g = g;
+        this.giorno = giorno;
+        this.mese = mese;
+        this.anno = anno;
+        this.giorno1 = giorno1;
+        this.mese1 = mese1;
+        this.anno1 = anno1;
     }
 
     public int getA() {
@@ -89,6 +101,43 @@ public class Data {
         }
     
         return is;
+    }
+    
+    public int nGiorni(){
+        int nGiorni = 0;       
+        int [] data1 = {giorno, mese, anno};
+        int [] data2 = {giorno1, mese1, anno1};
+        
+        if(anno > anno1){
+            int [] data1 = {giorno, mese, anno};
+            int [] data2 = {giorno1, mese1, anno1};    
+        }else{
+            if(mese > mese1){
+                
+            }else{
+                if
+            }
+            int [] data1 = {giorno, mese, anno};
+            int [] data2 = {giorno1, mese1, anno1};
+        }
+        
+        while(true){
+            if(data1 == data2){
+                break;
+            }
+            nGiorni++;
+            giorno += 1;
+            if(isValida() == false){
+                giorno = 0;
+                mese += 1;
+                if(mese == 13){
+                    mese = 0;
+                    anno++;
+                }
+            }
+        }
+        
+        return nGiorni;
     }
 
     public String info() {
