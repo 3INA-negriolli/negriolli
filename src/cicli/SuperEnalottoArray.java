@@ -16,12 +16,17 @@ public class SuperEnalottoArray {
     public SuperEnalottoArray() {
     }
 
-    public int generatore() {
+    public void setNumeriGiocati(int[] numeriGiocati) {
+        this.numeriGiocati = numeriGiocati;
+    }
+
+    
+    
+    public void generatore() {
         int i = 0;
         for (i = 0; i < 6; i++) {
             numeriGenerati[i] = (int) ((Math.random() * 99) + 1);
-        }
-        return numeriGenerati[i];
+        }        
     }
     
     public void controlloNDiversi(){
@@ -39,6 +44,7 @@ public class SuperEnalottoArray {
     public  String verificaVittoria() {
         String rit = "";
         boolean ver = false;
+
         Arrays.sort(numeriGenerati);
         Arrays.sort(numeriGiocati);
         

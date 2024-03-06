@@ -1,163 +1,144 @@
 package cicli;
 
+import java.time.LocalDate;
+
+import java.util.Arrays;
+
 /**
- * Classe che scrive una data controllando se è valida
- *
- * @author luca.negriolli 3INA 2024
- * @version 1.0
+ * 
+ * @author dennis.faes
  */
 public class Data {
+    private int giorno, mese, anno;
 
-    private int a;
-    private int m;
-    private int g;
-    private int giorno;
-    private int mese;
-    private int anno;
-    private int giorno1;
-    private int mese1;
-    private int anno1;
-    
     public Data() {
+        LocalDate d = LocalDate.now();
+        anno = d.getYear();
+        giorno = d.getDayOfMonth();
+        mese = d.getMonthValue();
     }
 
-    public Data(int a, int m, int g, int giorno, int mese, int anno, int giorno1, int mese1, int anno1) {
-        this.a = a;
-        this.m = m;
-        this.g = g;
+    public Data(int giorno, int mese, int anno){
         this.giorno = giorno;
         this.mese = mese;
+        this.anno = anno; 
+    }
+
+    public int getGiorno() {
+        return giorno;
+    }
+
+    public void setGiorno(int giorno) {
+        this.giorno = giorno;
+    }
+
+    public int getMese() {
+        return mese;
+    }
+
+    public void setMese(int mese) {
+        this.mese = mese;
+    }
+
+    public int getAnno() {
+        return anno;
+    }
+
+    public void setAnno(int anno) {
         this.anno = anno;
-        this.giorno1 = giorno1;
-        this.mese1 = mese1;
-        this.anno1 = anno1;
     }
 
-    public int getA() {
-        return a;
-    }
-
-    public void setA(int a) {
-        this.a = a;
-    }
-
-    public int getM() {
-        return m;
-    }
-
-    public void setM(int m) {
-        this.m = m;
-    }
-
-    public int getG() {
-        return g;
-    }
-
-    public void setG(int g) {
-        this.g = g;
-    }
-
-    public boolean isValida() {
-        boolean is = false;
-
-        if (a < 1000 || a > 9999) {
-            is = false;
-        }
-
-        if (m < 1 || m > 12) {
-            is = false;
-        }
-
-        if (m == 4 || m == 6 || m == 9 || m == 11) {
-            if (g >= 1 && g <= 30) {
-                is = true;
-            }
-        }
-
-        if (m == 1 || m == 2 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
-            if (g >= 1 && g <= 31) {
-                is = true;
-            }
-        }
-
-        if (a % 4 == 0) {
-            if (m == 2) {
-                if (g >= 1 && g <= 28) {
-                    is = true;
+    public boolean isDataValida(int g, int m, int a){
+        boolean isAnno = false;
+        boolean isMese = false;
+        boolean isGiorno = false;
+        boolean isData = false;
+        
+        if ((anno >= 1000) && (anno<= 9999))
+            isAnno = true;
+        
+        if ((mese >= 1) && (mese <= 12))
+            isMese = true;
+        
+        switch (mese){
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                if ((giorno >= 1) && (giorno <= 31)){
+                    isGiorno = true;
                 }
-            }
+                break;
+            case 4: case 6: case 9: case 11:
+                if ((giorno >= 1) && (giorno <= 30)){
+                    isGiorno = true;
+                }
+                break;
+            case 2:
+                if (isBisestile() == true){
+                    if ((giorno >= 1) && (giorno <= 29))
+                        isGiorno = true;
+                } else {
+                    if ((giorno >= 1) && (giorno <= 28))
+                        isGiorno = true;
+                }
+        }
+        
+        if (isAnno == true && isMese == true && isGiorno == true){
+            isData = true;
         }
 
-        return is;
+        return isData;
     }
-
-    public boolean isBisestile() {
+    
+    public boolean isBisestile(){
         boolean is = false;
         
-        if (a % 400 == 0 || (a % 4 == 0 && !(a % 100 == 0))) {
+        if (anno%400 == 0 || (anno%4 == 0 && !(anno%100 == 0))){
             is = true;
-        }else{
-            is = false;
         }
-    
+        
         return is;
     }
     
-    public int nGiorni(){
-        int nGiorni = 0;       
-        int [] data1 = {giorno, mese, anno};
-        int [] data2 = {giorno1, mese1, anno1};
+    public int nGiorni(int giorno1, int mese1, int anno1){
+        int nGiorni = 0;
         
-        if(anno > anno1){
-            int [] data1 = {giorno, mese, anno};
-            int [] data2 = {giorno1, mese1, anno1};    
-        }else{
-            if(mese > mese1){
-                
-            }else{
-                if
-            }
-            int [] data1 = {giorno, mese, anno};
-            int [] data2 = {giorno1, mese1, anno1};
-        }
+        int [] primaData = {this.giorno,this.mese,this.anno};
+        int [] secondaData = {giorno1,mese1,anno1};
         
         while(true){
-            if(data1 == data2){
+            if(Arrays.toString(primaData).equals(Arrays.toString(secondaData))){
                 break;
             }
             nGiorni++;
             giorno += 1;
-            if(isValida() == false){
+            if(isDataValida() == false){
                 giorno = 0;
                 mese += 1;
-                if(mese == 13){
+                if (mese == 13){
                     mese = 0;
                     anno++;
                 }
             }
         }
-        
         return nGiorni;
     }
-
-    public String info() {
-        String testo = "";
-
-        if (isValida() == true) {
-            if (g >= 1 && g <= 9) {
-                testo += "0" + g + "/";
+    
+    public String info(){
+        String data = "";
+        if (isDataValida() == true){
+            if (giorno >= 1  && giorno <= 9){
+                data += "0" + giorno + "/";
             } else {
-                testo = g + "/" + m + "/" + a;
+                data += giorno + "/";
             }
-            if (m >= 1 && m <= 9) {
-                testo += "0" + m + "/" + a;
+            if (mese >= 1  && mese <= 9){
+                data += "0" + mese + "/" + anno;
             } else {
-                testo = g + "/" + m + "/" + a;
-            } 
+                data += mese + "/" + anno;
+            }
         } else {
-            testo = "Data Invalida";
+            data = "Data non valida";
         }
-        return testo;
-    }
-
+        
+        return data;
+    }  
 }
