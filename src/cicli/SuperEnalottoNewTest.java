@@ -3,7 +3,7 @@ package cicli;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class SuperEnalottoArrayTest {
+public class SuperEnalottoNewTest {
   
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
@@ -15,7 +15,7 @@ public class SuperEnalottoArrayTest {
             numeriGiocati[i] = in.nextInt();
         }
         
-        SuperEnalottoArray se = new SuperEnalottoArray();
+        SuperEnalottoNew se = new SuperEnalottoNew();
         
         se.generatore();
         
