@@ -64,6 +64,19 @@ public class Orario {
     }
 
     /**
+     * metodo privato per verificare se la data è valida
+     *
+     * @return boolean
+     */
+    private boolean isValido() {
+        boolean valido = false;
+        if (secondi < 60 && minuti < 60 && ore < 24) {
+            valido = true;
+        }
+        return valido;
+    }
+
+    /**
      * Metodo che calcola i secondi dell'orario inserito
      *
      * @return
@@ -71,7 +84,9 @@ public class Orario {
     public int calcolaSecondi() {
         int totSec = 0;
 
-        totSec = (ore * 60 * 60) + (minuti * 60) + secondi;
+        if (isValido()) {
+            totSec = (ore * 60 * 60) + (minuti * 60) + secondi;
+        }
 
         return totSec;
     }
@@ -84,7 +99,9 @@ public class Orario {
     public int calcolaMinuti() {
         int totMin = 0;
 
-        totMin = (ore * 60) + minuti;
+        if (isValido()) {
+            totMin = (ore * 60) + minuti;
+        }
 
         return totMin;
     }
@@ -120,8 +137,25 @@ public class Orario {
      */
     public String info() {
         String testo = "";
+        if (isValido()) {
+            if (ore < 10) {
+                testo += "0" + ore + ":";
+            } else {
+                testo += ore + ":";
+            }
 
-        testo = ore + ":" + minuti + ":" + secondi;
+            if (minuti < 10) {
+                testo += "0" + minuti + ":";
+            } else {
+                testo += minuti + ":";
+            }
+
+            if (secondi < 10) {
+                testo += "0" + secondi;
+            } else {
+                testo += secondi;
+            }
+        }
 
         return testo;
     }

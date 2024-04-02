@@ -1,7 +1,5 @@
 package correzioniVerifiche;
 
-
-import correzioniVerifiche.Orario;
 import java.util.Scanner;
 
 public class OrarioTest {
