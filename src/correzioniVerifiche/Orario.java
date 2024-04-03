@@ -1,5 +1,7 @@
 package correzioniVerifiche;
 
+import java.time.LocalTime;
+
 /**
  * Classe che, dato un orario composto da ore, minuti e secondi, preveda metodi,
  * oltre quelli di default, per effettuare le seguenti operazioni: - secondi
@@ -10,7 +12,7 @@ package correzioniVerifiche;
  * @version 1.0
  */
 public class Orario {
-
+    
     private int ore;
     private int minuti;
     private int secondi;
@@ -19,6 +21,11 @@ public class Orario {
      * Costruttore vuoto di default
      */
     public Orario() {
+        LocalTime adesso = LocalTime.now();
+        
+        ore = adesso.getHour();
+        minuti = adesso.getMinute();
+        secondi = adesso.getSecond();
     }
 
     /**
@@ -29,9 +36,9 @@ public class Orario {
      * @param secondi
      */
     public Orario(int ore, int minuti, int secondi) {
-        this.ore = ore;
-        this.minuti = minuti;
-        this.secondi = secondi;
+        setOre(ore); //this.ore = ore;
+        setMinuti(minuti); //this.minuti = minuti;
+        setSecondi(secondi); //this.secondi = secondi;
     }
 
     /**
@@ -42,25 +49,32 @@ public class Orario {
     public int getOre() {
         return ore;
     }
-
+    
     public void setOre(int ore) {
-        this.ore = ore;
+        if (isValido()) {
+            this.ore = ore;
+        }//costruisco l'orario solo se viene validato
     }
-
+    
     public int getMinuti() {
         return minuti;
     }
-
+    
     public void setMinuti(int minuti) {
-        this.minuti = minuti;
+        if (isValido()) {
+            this.minuti = minuti;
+        }
     }
-
+    
     public int getSecondi() {
         return secondi;
     }
-
+    
     public void setSecondi(int secondi) {
-        this.secondi = secondi;
+        if (isValido()) {
+            this.secondi = secondi;
+        }
+        
     }
 
     /**
@@ -70,9 +84,23 @@ public class Orario {
      */
     private boolean isValido() {
         boolean valido = false;
-        if (secondi < 60 && minuti < 60 && ore < 24) {
-            valido = true;
+        
+        valido = isValido(ore, minuti, secondi);
+        
+        return valido;
+    }
+    
+    public static boolean isValido(int ore, int minuti, int secondi) {
+        boolean valido = false;
+        
+        if (ore >= 0 && ore <= 23) {
+            if (minuti >= 0 && minuti <= 59) {
+                if (secondi >= 0 && secondi <= 59) {
+                    valido = true;
+                }
+            }
         }
+        
         return valido;
     }
 
@@ -83,11 +111,11 @@ public class Orario {
      */
     public int calcolaSecondi() {
         int totSec = 0;
-
+        
         if (isValido()) {
             totSec = (ore * 60 * 60) + (minuti * 60) + secondi;
         }
-
+        
         return totSec;
     }
 
@@ -98,11 +126,11 @@ public class Orario {
      */
     public int calcolaMinuti() {
         int totMin = 0;
-
+        
         if (isValido()) {
             totMin = (ore * 60) + minuti;
         }
-
+        
         return totMin;
     }
 
@@ -118,15 +146,22 @@ public class Orario {
         int diffSec = 0;
         int totSec1 = 0;
         totSec1 = (ore1 * 60 * 60) + (minuti1 * 60) + secondi1;
-
+        
         if (calcolaSecondi() > totSec1) {
             diffSec = calcolaSecondi() - totSec1;
-
+            
         } else {
             diffSec = totSec1 - calcolaSecondi();
         }
-
+        
         return diffSec;
+    }
+    
+    public void diffOrarioNew(Orario o){
+        
+        int ore = o.getOre();
+        int minuti = o.getMinuti();
+        int secondi = o.getSecondi();
     }
 
     /**
@@ -137,26 +172,26 @@ public class Orario {
      */
     public String info() {
         String testo = "";
-        if (isValido()) {
-            if (ore < 10) {
-                testo += "0" + ore + ":";
-            } else {
-                testo += ore + ":";
-            }
 
-            if (minuti < 10) {
-                testo += "0" + minuti + ":";
-            } else {
-                testo += minuti + ":";
-            }
-
-            if (secondi < 10) {
-                testo += "0" + secondi;
-            } else {
-                testo += secondi;
-            }
+        //if (isValido()) { //non serve validarlo
+        if (ore < 10) {
+            testo += "0" + ore + ":";
+        } else {
+            testo += ore + ":";
         }
-
+        
+        if (minuti < 10) {
+            testo += "0" + minuti + ":";
+        } else {
+            testo += minuti + ":";
+        }
+        
+        if (secondi < 10) {
+            testo += "0" + secondi;
+        } else {
+            testo += secondi;
+        }
+        
         return testo;
     }
 }
