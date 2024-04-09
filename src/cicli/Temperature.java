@@ -12,9 +12,8 @@ public class Temperature {
     private String[] giorni;
     private float[] gradi;
 
-    public Temperature(String[] giorni, float[] gradi) {
-        this.giorni = giorni;
-        this.gradi = gradi;
+    public Temperature() {
+        
     }
 
     public float[] getGradi() {
@@ -22,7 +21,9 @@ public class Temperature {
     }
 
     public void setGradi(float[] gradi) {
-        this.gradi = gradi;
+        if(isValido()){
+            this.gradi = gradi;
+        }
     }
 
     public boolean isValido() {
@@ -37,13 +38,28 @@ public class Temperature {
 
         return valido;
     }
+    
+    public boolean aggiungiTemperatura(String giorno, float temperatura){
+        boolean controllo = true;
+        
+        for(int i = 0; i < gradi.length; i++){
+            float t = gradi[i];
+            if(gradi[i] == t){
+                controllo = false;
+            }
+        }
+        
+        return controllo;
+    }
 
     public float tMax() {
-        float tMax = 0;
+        float tMax = gradi[0];
+        String gMax = "";
 
         for (int i = 0; i < gradi.length; i++) {
             if (gradi[i] > tMax) 
                 tMax = gradi[i];
+                gMax = giorni[i];
             
         }
 
@@ -52,15 +68,29 @@ public class Temperature {
     }
     
     public float tMin(){
-        float tMin = 0;
+        float tMin = gradi[0];
+        String gMin = "";
 
         for (int i = 0; i < gradi.length; i++) {
             if (gradi[i] < tMin) 
                 tMin = gradi[i];
+                gMin = giorni[i];
             
         }
 
         return tMin;
+    }
+    
+    public float tMedia(){
+        float media = 0;
+        
+        for(int i = 0; i < gradi.length; i++){
+            media += gradi[i];
+        }
+        
+        media /= giorni.length;
+        
+        return media;
     }
     
 }

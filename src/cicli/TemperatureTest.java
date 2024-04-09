@@ -1,9 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cicli;
+
+import java.util.Scanner;
 
 /**
  *
@@ -11,11 +8,26 @@ package cicli;
  */
 public class TemperatureTest {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Scanner in = new Scanner(System.in);
+        
+        float[] temperature = new float[7];
+        String[] giorni = new String[7];
+        
+        for(int i = 0; i < temperature.length; i++){
+            System.out.println("Inserire la temperatura di oggi");
+            temperature[i] = in.nextFloat();
+        }
+        
+        Temperature t = new Temperature();
+        
+        System.out.println("Il giorno con la temperatura maggiore è: " + t.tMax());
+        System.out.println("Il giorno con la temperatura minore è: " + t.tMin());
+        System.out.println("La temperatura media settimanale è: " + t.tMedia());
+        
+        
+        
+        
     }
     
 }
