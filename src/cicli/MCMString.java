@@ -25,7 +25,7 @@ public class MCMString {
     }
     
     public int mcm(){
-        int mcm;
+        int mcm = 0;
         
         String [] Numeri = this.num.split(",");//separo i singoli numeri, e come elementodi separazione metto la virgola
         
