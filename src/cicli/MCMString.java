@@ -27,7 +27,7 @@ public class MCMString {
     public int mcm(){
         int mcm = 0;
         
-        String [] Numeri = this.num.split(",");//separo i singoli numeri, e come elementodi separazione metto la virgola
+        String [] Numeri = this.num.split(",");//separo i singoli numeri, e come elemento di separazione metto la virgola
         
         int [] vetNumeri = new int [Numeri.length];
         for(int i = 0; i < Numeri.length; i++){
