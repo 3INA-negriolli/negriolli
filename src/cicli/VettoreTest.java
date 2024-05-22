@@ -6,7 +6,7 @@ public class VettoreTest {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        
+        /*
         int posizione = 7;
         int valore;
         int dim = 10;
@@ -30,11 +30,11 @@ public class VettoreTest {
         System.out.println(v1.visualizzaVettore());
         v1.rimuoviElementoPerPosizione(posizione);
         System.out.println(v1.visualizzaVettore());
-        */
+        
         //v1.rimuoviElementoPerPosizione(posizione);
         v1.rimuoviElementoPerValore(valore);
         v1.visualizzaVettore();
-        
+        */
     }
 
 }

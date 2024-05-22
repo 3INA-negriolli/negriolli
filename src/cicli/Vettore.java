@@ -10,28 +10,41 @@ import java.util.Arrays;
  */
 public class Vettore {
 
-    public int[] vett;
+    private int[] vett;
 
     public Vettore() {
     }
 
-    public Vettore(int[] vett, int dim) {
-        this.vett = new int[dim];
+    public Vettore(int[] vett) {
         this.vett = vett;
+        setVett(vett);
     }
 
     public int[] getVett() {
-        int[] vett = new int[this.vett.length];
-        for (int i = 0; i < vett.length; i++) {
-            vett[i] = this.vett[i];
+        if (vett == null) {
+            return null;
         }
-        return vett;
+
+        int[] temp = new int[vett.length];
+
+        //System.arraycopy(vett, 0, temp, 0, vett.length);
+        return temp;
     }
 
-    public void setVett(int[] vett) {
+    /**
+     * Non può essere modificato dalle classi che lo ereditano
+     *
+     * @param vett
+     */
+    public final void setVett(int[] vett) {
+
+        //this.vett = vett.clone();
+        this.vett = new int[vett.length];
+
         for (int i = 0; i < vett.length; i++) {
             this.vett[i] = vett[i];
         }
+
     }
 
     public void caricaVettoreRandom() {
@@ -48,8 +61,19 @@ public class Vettore {
     public String visualizzaVettore() {
         String testo = "";
 
-        testo = Arrays.toString(vett);
+        if (vett != null) {
+            testo = "[";
+        }
+        for (int i = 0; i < vett.length; i++) {
+            if (i == (vett.length - 1)) {
+                testo += vett[i];
+            } else {
+                testo += vett[i] + ", ";
+            }
+        }
+        testo += "]";
 
+        //testo = Arrays.toString(vett);
         return testo;
     }
 
@@ -94,70 +118,95 @@ public class Vettore {
      * @param valore
      */
     public void aggiungiElemento(int valore) {
-        int[] vett = new int[this.vett.length+1];
-        
-        for (int i = 0; i < this.vett.length; i++) {
-            vett[i] = this.vett[i];
+        if (vett == null) {
+            vett = new int[1];
+
+            vett[0] = valore;
+        } else {
+            int[] newVett = new int[vett.length + 1];
+
+            for (int i = 0; i < vett.length; i++) {
+                newVett[i] = vett[i];
+            }
+
+            newVett[newVett.length - 1] = valore;
+
+            vett = newVett;
         }
-        vett[vett.length-1] = valore;
-        
-        setVett(vett);
     }
 
     /**
-     * Rimuove l'elemento alla posizione indicata dall'utente
-     * Non va
-     * 
+     * Rimuove l'elemento alla posizione indicata dall'utente Non va
+     *
      * @param posizione
      * @return
      */
     public boolean rimuoviElementoPerPosizione(int posizione) {
-        boolean rimosso = false;
-        int temp = 0;
-        int posChiave = 0;
-        int[] vettModificato = new int[vett.length - 2];
-
-        if (posizione > 0 && posizione < vett.length) {
-            temp = vett[vett.length - 1];
-            vett[vett.length - 1] = vett[posizione];
-            vett[posizione] = temp;
-            rimosso = true;
+        if (vett == null || posizione < 0 || posizione > vett.length) {
+            return false;
         }
 
-        return rimosso;
+        int[] newVett = new int[vett.length - 1];
+
+        for (int i = 0; i < newVett.length; i++) {
+            if (i < posizione) {
+                newVett[i] = vett[i];
+            } else {
+                newVett[i] = vett[i + 1];
+            }
+        }
+
+        vett = newVett;
+
+        return true;
     }
 
     /**
      * Rimuove l'elemento con il valore indicato dall'utente (azzerandolo) la
      * quale posizione viene ricercata tramite ricerca lineare, poi mettendo
      * l'elemento da eliminare all'ultima posizione dell'array affinchè non
-     * venga memorizzato nel nuovo array
-     * Non va
-     * 
+     * venga memorizzato nel nuovo array Non va
+     *
      * @param valore
      * @return
      */
     public boolean rimuoviElementoPerValore(int valore) {
-        boolean rimosso = false;
-        int temp = 0;
-        int posChiave = 0;
-        int[] vett = new int[this.vett.length - 2];
+        boolean trovato = false;
 
-        for (int i = 0; i < this.vett.length; i++) {  // ricerca lineare
-            if (valore == this.vett[i]) {
-                posChiave = i;                        //scambio...
-                temp = this.vett[this.vett.length - 1];         //scambio...
-                this.vett[this.vett.length - 1] = this.vett[posChiave];    //scambio...
-                this.vett[posChiave] = temp;
-                rimosso = true;
-            }
+        if (vett == null) {
+            return false;
         }
 
         for (int i = 0; i < vett.length; i++) {
-            vett[i] = this.vett[i];
+            if (vett[i] == valore) {
+                rimuoviElementoPerPosizione(i);
+                i = 0;
+            }
         }
+        trovato = true;
 
-        return rimosso;
+        return trovato;
+    }
+}
+/*
+    public boolean shiftDx(int n) {
+        boolean spostato = false;
+        int temp;
+
+        if (vett == null) {
+            return false;
+        } else {
+            do{
+            temp = vett[0];
+            vett[0] = vett[vett.length-1];
+            
+            {while(n != 0);
+        }
+        
+        return spostato;
     }
 
 }
+/*private boolean isValido(int[] vett){
+        
+ */
