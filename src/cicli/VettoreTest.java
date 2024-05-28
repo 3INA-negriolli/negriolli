@@ -6,13 +6,13 @@ public class VettoreTest {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        /*
+        
         int posizione = 7;
         int valore;
         int dim = 10;
         int vett[] = new int[dim];
 
-        Vettore v1 = new Vettore(vett,dim);
+        Vettore v1 = new Vettore(vett);
 
 
         v1.caricaVettoreRandom();
@@ -25,7 +25,7 @@ public class VettoreTest {
         v1.rimuoviElementoPerValore(valore);
         System.out.println(v1.visualizzaVettore());
         
-        /*
+        
         v1.modificaElemento(posizione, valore);
         System.out.println(v1.visualizzaVettore());
         v1.rimuoviElementoPerPosizione(posizione);
@@ -34,7 +34,7 @@ public class VettoreTest {
         //v1.rimuoviElementoPerPosizione(posizione);
         v1.rimuoviElementoPerValore(valore);
         v1.visualizzaVettore();
-        */
+        
     }
 
 }
