@@ -3,12 +3,13 @@ package tris;
 /**
  *
  * @author luca.negriolli
- */
+*/ 
 public class Tris {
 
     private String g1;
     private String g2;
     private String campoDaGioco[][];
+    int t = 0;
 
     public Tris() {
     }
@@ -41,14 +42,24 @@ public class Tris {
 
     public void aggiungiElementoPerPosizione(String valore, int riga, int colonna) {
         if (isValido(valore)) {
-            campoDaGioco[riga][colonna] = valore;
+            if(turno() == 1){
+                campoDaGioco[riga][colonna] = valore;
+            }
+            
         }
 
     }
 
     public int turno() {
+        int turno = 0;
         
+        if(t % 2 == 0){
+            turno = 1;
+        }else{
+            turno = 2;
+        }
         
+        t++;
 
         return turno;
     }
@@ -56,7 +67,7 @@ public class Tris {
     public boolean isValido(String valore) {
         boolean valido = false;
 
-        if (valore.equals("x") || valore.equals("o")) {
+        if (valore.equalsIgnoreCase("x") || valore.equalsIgnoreCase("o")) {
             valido = true;
         }
 
