@@ -1,23 +1,18 @@
 package tris;
 
-/**
- *
- * @author luca.negriolli
-*/ 
 public class Tris {
-
     private String g1;
     private String g2;
-    private String campoDaGioco[][];
-    int t = 0;
 
-    public Tris() {
-    }
+    private String[][] campodaGioco = {
+        {"□", "□", "□"},
+        {"□", "□", "□"},
+        {"□", "□", "□"}
+    };
 
-    public Tris(String g1, String g2, int campoDaGioco[][]) {
+    public Tris(String g1, String g2) {
         this.g1 = g1;
         this.g2 = g2;
-        this.campoDaGioco = new String[3][3];
     }
 
     public String getG1() {
@@ -36,43 +31,51 @@ public class Tris {
         this.g2 = g2;
     }
 
-    public String[][] getCampoDaGioco() {
-        return campoDaGioco;
-    }
+    public boolean turno() {
+        int countX = 0;
+        int countO = 0;
 
-    public void aggiungiElementoPerPosizione(String valore, int riga, int colonna) {
-        if (isValido(valore)) {
-            if(turno() == 1){
-                campoDaGioco[riga][colonna] = valore;
+        for (int i = 0; i < campodaGioco.length; i++) {
+            for (int j = 0; j < campodaGioco[i].length; j++) {
+                if (campodaGioco[i][j].equals("X")) {
+                    countX++;
+                } else if (campodaGioco[i][j].equals("O")) {
+                    countO++;
+                }
             }
-            
         }
 
+        return countX <= countO;
     }
 
-    public int turno() {
-        int turno = 0;
-        
-        if(t % 2 == 0){
-            turno = 1;
-        }else{
-            turno = 2;
+    public void posiziona(int x, int y) {
+        if (campodaGioco[x][y].equals("□")) {
+            if (turno()) {
+                campodaGioco[x][y] = "O";
+            } else {
+                campodaGioco[x][y] = "X";
+            }
+        } else {
+            System.out.println("posizione gia presa");
         }
-        
-        t++;
-
-        return turno;
     }
 
-    public boolean isValido(String valore) {
-        boolean valido = false;
+    public void posiziona(String xStr, String yStr) {
+        int x = Integer.parseInt(xStr);
+        int y = Integer.parseInt(yStr);
+        posiziona(x, y);
+    }
 
-        if (valore.equalsIgnoreCase("x") || valore.equalsIgnoreCase("o")) {
-            valido = true;
+    public String stampa() {
+        StringBuilder matrice = new StringBuilder();
+
+        for (int i = 0; i < campodaGioco.length; i++) {
+            for (int j = 0; j < campodaGioco[i].length; j++) {
+                matrice.append(campodaGioco[i][j]).append(" ");
+            }
+            matrice.append("\n");
         }
 
-        return valido;
-
+        return matrice.toString();
     }
-
 }
