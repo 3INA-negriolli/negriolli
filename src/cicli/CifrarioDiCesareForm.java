@@ -41,6 +41,7 @@ public class CifrarioDiCesareForm extends javax.swing.JFrame {
         lblTitolo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblTitolo.setText("Cifrario di Cesare");
 
+        txtStringaInput.setEditable(false);
         txtStringaInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStringaInputActionPerformed(evt);
