@@ -2,6 +2,10 @@ package tris;
 
 import java.util.Scanner;
 
+/**
+ * 
+ * @author luca.negriolli
+ */
 public class Tris {
     
     private String g1, g2;

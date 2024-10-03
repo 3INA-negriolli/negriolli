@@ -7,7 +7,7 @@ package tris;
 
 /**
  *
- * @author denni
+ * @author luca.negriolli
  */
 public class TrisForm extends javax.swing.JFrame {
 
