@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tris;
+package Info2024_2025;
 
 /**
  *
- * @author luca.negriolli
+ * @author denni
  */
-public class TrisForm extends javax.swing.JFrame {
+public class TrisCompitoForm extends javax.swing.JFrame {
 
     /**
      * Creates new form TrisForm
      */
-    public TrisForm() {
+    public TrisCompitoForm() {
         initComponents();
     }
 
@@ -167,7 +167,9 @@ public class TrisForm extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(178, 178, 178)
                                                 .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(btn2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(50, 50, 50)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,7 +234,7 @@ public class TrisForm extends javax.swing.JFrame {
     private void btnLanciaMonetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLanciaMonetaActionPerformed
         // TODO add your handling code here:
         String g1 = "Giocatore 1", g2 = "Giocatore 2";
-        Tris t = new Tris(g1, g2);
+        TrisCompito t = new TrisCompito(g1, g2);
 
         int ris = t.moneta();
 
@@ -257,7 +259,7 @@ public class TrisForm extends javax.swing.JFrame {
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         // TODO add your handling code here:
         String g1 = "Giocatore 1", g2 = "Giocatore 2";
-        Tris t = new Tris(g1, g2);
+        TrisCompito t = new TrisCompito(g1, g2);
 
         int posX = 0, posY = 0;
         btn1.setEnabled(false);
@@ -284,7 +286,7 @@ public class TrisForm extends javax.swing.JFrame {
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         // TODO add your handling code here:
         String g1 = "Giocatore 1", g2 = "Giocatore 2";
-        Tris t = new Tris(g1, g2);
+        TrisCompito t = new TrisCompito(g1, g2);
 
         int posX = 0, posY = 1;
         btn2.setEnabled(false);
@@ -311,7 +313,7 @@ public class TrisForm extends javax.swing.JFrame {
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         // TODO add your handling code here:
         String g1 = "Giocatore 1",g2 = "Giocatore 2";
-        Tris t = new Tris(g1, g2);
+        TrisCompito t = new TrisCompito(g1, g2);
         
         int posX = 1,posY = 0;
         btn4.setEnabled(false);
@@ -339,7 +341,7 @@ public class TrisForm extends javax.swing.JFrame {
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         // TODO add your handling code here:
         String g1 = "Giocatore 1",g2 = "Giocatore 2";
-        Tris t = new Tris(g1, g2);
+        TrisCompito t = new TrisCompito(g1, g2);
         
         int posX = 2,posY = 1;
         btn8.setEnabled(false);
@@ -366,7 +368,7 @@ public class TrisForm extends javax.swing.JFrame {
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         // TODO add  handling code here:
         String g1 = "Giocatore 1",g2 = "Giocatore 2";
-        Tris t = new Tris(g1, g2);
+        TrisCompito t = new TrisCompito(g1, g2);
         
         int posX = 0,posY = 2;
         btn3.setEnabled(false);
@@ -393,7 +395,7 @@ public class TrisForm extends javax.swing.JFrame {
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         // TODO add your handling code here:
         String g1 = "Giocatore 1",g2 = "Giocatore 2";
-        Tris t = new Tris(g1, g2);
+        TrisCompito t = new TrisCompito(g1, g2);
         
         int posX = 1,posY = 1;
         btn5.setEnabled(false);
@@ -420,7 +422,7 @@ public class TrisForm extends javax.swing.JFrame {
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         // TODO add your handling code here:
         String g1 = "Giocatore 1",g2 = "Giocatore 2";
-        Tris t = new Tris(g1, g2);
+        TrisCompito t = new TrisCompito(g1, g2);
         
         int posX = 1,posY = 2;
         btn6.setEnabled(false);
@@ -447,7 +449,7 @@ public class TrisForm extends javax.swing.JFrame {
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         // TODO add your handling code here:
         String g1 = "Giocatore 1",g2 = "Giocatore 2";
-        Tris t = new Tris(g1, g2);
+        TrisCompito t = new TrisCompito(g1, g2);
         
         int posX = 2,posY = 0;
         btn7.setEnabled(false);
@@ -474,7 +476,7 @@ public class TrisForm extends javax.swing.JFrame {
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         // TODO add your handling code here:
         String g1 = "Giocatore 1",g2 = "Giocatore 2";
-        Tris t = new Tris(g1, g2);
+        TrisCompito t = new TrisCompito(g1, g2);
         
         int posX = 2,posY = 2;
         btn9.setEnabled(false);
@@ -523,20 +525,21 @@ public class TrisForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TrisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrisCompitoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TrisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrisCompitoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TrisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrisCompitoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TrisForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(TrisCompitoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TrisForm().setVisible(true);
+                new TrisCompitoForm().setVisible(true);
             }
         });
     }

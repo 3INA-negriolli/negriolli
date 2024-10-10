@@ -1,26 +1,22 @@
-package tris;
+package Info2024_2025;
 
 import java.util.Scanner;
 
-/**
- * 
- * @author luca.negriolli
- */
-public class Tris {
+public class TrisCompito {
     
     private String g1, g2;
 
     private String[][] campoDaGioco = new String[3][3];
 
-    public Tris() {
+    public TrisCompito() {
 
     }
 
-    public Tris(String g1) {
+    public TrisCompito(String g1) {
         this.g1 = g1;
     }
 
-    public Tris(String g1, String g2) {
+    public TrisCompito(String g1, String g2) {
         this.g1 = g1;
         this.g2 = g2;
 
@@ -148,7 +144,7 @@ public class Tris {
 
     public static void main(String[] args) {
         Scanner tastiera = new Scanner(System.in);
-        Tris t = new Tris();
+        TrisCompito t = new TrisCompito();
         
         System.out.println(t.moneta());
         System.out.println(t.moneta());
