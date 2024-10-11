@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tris;
 
 import java.util.Scanner;
 /**
  *
- * @author dennis.faes
+ * @author luca.negriolli 4INA 2024
  */
 public class TrisCorrettoTest {
     
