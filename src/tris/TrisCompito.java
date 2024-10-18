@@ -1,4 +1,4 @@
-package Info2024_2025;
+package tris;
 
 import java.util.Scanner;
 

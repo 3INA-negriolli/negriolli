@@ -7,7 +7,7 @@ import java.util.logging.Logger;
  *
  * @author luca.negriolli 4INA 2024
  */
-public class TrisCorrettoTest {
+public class ExcpTest {
     
     /**
      * @param args the command line arguments
@@ -53,7 +53,7 @@ public class TrisCorrettoTest {
         
         
         }
-    */
+        */
     }
     
 }

@@ -2,13 +2,19 @@ package tris;
 
 import java.util.Objects;
 
-public final class TrisCorretto{
+public final class Excp{
     private String[][] campoDaGioco;
     
     private String giocatoreX;
     private String giocatoreO;
+    
+    private int dimensione;
 
-    public TrisCorretto(int dimensione, String giocatoreX, String giocatoreO) throws Exception {
+    public Excp() {
+        
+    }
+
+    public Excp(int dimensione, String giocatoreX, String giocatoreO) throws Exception {
         campoDaGioco = new String[dimensione][dimensione];
         
         setGiocatoreX(giocatoreX);
@@ -20,6 +26,20 @@ public final class TrisCorretto{
     public String[][] getCampoDaGioco() {
         return this.campoDaGioco;
     }    
+
+    public int getDimensione() {
+        return dimensione;
+    }
+
+    public void setDimensione(int dimensione) throws Exception {
+        if(dimensione >= 3){
+            this.dimensione = dimensione;
+        }else{
+            throw new Exception ("La dimensione deve essere >= 3!");
+        }
+    }
+    
+    
     
     public String getGiocatoreX() {
         return giocatoreX;
