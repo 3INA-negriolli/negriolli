@@ -1,8 +1,9 @@
-package tris;
+package eccezioni;
 
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tris.TrisCorretto;
 /**
  *
  * @author luca.negriolli 4INA 2024

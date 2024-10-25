@@ -1,4 +1,4 @@
-package tris;
+package eccezioni;
 
 import java.util.Objects;
 
