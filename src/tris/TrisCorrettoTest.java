@@ -3,23 +3,23 @@ package tris;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 /**
  *
  * @author luca.negriolli 4INA 2024
  */
 public class TrisCorrettoTest {
-    
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args){        
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        
+
         String giocatoreX = "c", giocatoreO = "v";
-        
-        
+
         try {
-           TrisCorretto t = new TrisCorretto(3, giocatoreX, giocatoreO);
+            TrisCorretto t = new TrisCorretto(3, giocatoreX, giocatoreO);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
@@ -53,7 +53,7 @@ public class TrisCorrettoTest {
         
         
         }
-    */
+         */
     }
-    
+
 }

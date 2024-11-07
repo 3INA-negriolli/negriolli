@@ -5,8 +5,8 @@ package eccezioni;
  * verificare se è possibile costruire un triangolo Un triangolo é possibile
  * solo se la lunghezza di ciascun lato è maggiore della somma delle altre due
  *
- * @author negriolli.luca 3INA 2023
- * @verion 1.0
+ * @author negriolli.luca 4INA 2024
+ * @version 1.0
  */
 public class TriangoloEccezione {
 
@@ -137,8 +137,8 @@ public class TriangoloEccezione {
     public String info() {
         String info;
         info = "lato 1: " + l1 + "\n"
-                + "lato 2: " + l1 + "\n"
-                + "lato 3: " + l1 + "\n";
+                + "lato 2: " + l2 + "\n"
+                + "lato 3: " + l3 + "\n";
         return info;
     }
 
