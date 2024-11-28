@@ -21,7 +21,7 @@ public class MatriceQuadrataWrapper {
             if (n >= 2) {
                 this.n = n;
                 matrice = new Integer[n][n];
-            }else{
+            } else {
                 throw new Exception("n >= di 2");
             }
         } else {
@@ -47,17 +47,41 @@ public class MatriceQuadrataWrapper {
         return n;
     }
 
+    /**
+     * Imposta/Modifica il valore di n
+     *
+     * @param n
+     */
+    public void setN(Integer n) {
+        this.n = n;
+    }
+
+    /**
+     * Riempie la matrice con numeri casuali senza doppioni
+     */
     public void caricaRandom() {
         Random r = new Random();
 
-        for (Integer i = 0; i < matrice.length; i++) {
-            for (Integer j = 0; j < matrice.length; j++) {
-                matrice[i][j] = r.nextInt(99) + 1;
+        boolean[] usati = new boolean[100];  
+
+        for (int i = 0; i < matrice.length; i++) {
+            for (int j = 0; j < matrice[0].length; j++) {
+                int numeroCasuale;
+                do {
+                    numeroCasuale = r.nextInt(99) + 1;  
+                } while (usati[numeroCasuale]);  
+
+                matrice[i][j] = numeroCasuale;
+                usati[numeroCasuale] = true;  
             }
         }
-
     }
 
+    /**
+     * Metodo che visualizza la matrice
+     *
+     * @return
+     */
     public String visualizza() {
         String testo = "┌" + "      ┬    " + "  ┐";
 
@@ -82,14 +106,18 @@ public class MatriceQuadrataWrapper {
      * @param val
      * @return
      */
-    public boolean modificaElemento(Integer r, Integer c, Integer val) {
+    public boolean modificaElemento(Integer r, Integer c, Integer val) throws Exception {
         boolean modificato = false;
 
-        for (Integer i = 0; i < matrice.length; i++) {
-            for (Integer j = 0; j < matrice.length; j++) {
-                if (i == r && j == c) {
-                    matrice[i][j] = val;
-                    modificato = true;
+        if (r == null || c == null || val == null || r > matrice.length - 1 || c > matrice.length - 1) {
+            throw new Exception("Coordinate o valore inseriti non validi! ");
+        } else {
+            for (Integer i = 0; i < matrice.length; i++) {
+                for (Integer j = 0; j < matrice.length; j++) {
+                    if (i == r && j == c) {
+                        matrice[i][j] = val;
+                        modificato = true;
+                    }
                 }
             }
         }
@@ -102,8 +130,18 @@ public class MatriceQuadrataWrapper {
      * matrice.
      */
     public void ordinaPerRiga() {
-        Integer temp;
-
+        for (int i = 0; i < matrice.length; i++) {
+            int n = matrice[i].length;
+            for (int j = 0; j < n - 1; j++) {
+                for (int k = 0; k < n - j - 1; k++) {
+                    if (matrice[i][k] > matrice[i][k + 1]) {
+                        Integer temp = matrice[i][k];
+                        matrice[i][k] = matrice[i][k + 1];
+                        matrice[i][k + 1] = temp;
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -111,15 +149,20 @@ public class MatriceQuadrataWrapper {
      *
      * @return
      */
-    public Integer[] elementiDiagonalePrincipale() {
+    public Integer[] elementiDiagonalePrincipale() throws Exception {
         Integer[] elementi = new Integer[matrice.length];
-        Integer temp = 0;
-        Integer j = 0;
 
-        for (Integer i = 0; i < matrice.length; i++) {
-            temp = matrice[i][i];
-            elementi[j] = temp;
-            j++;
+        if (n == 2) {
+            Integer temp = 0;
+            Integer j = 0;
+
+            for (Integer i = 0; i < matrice.length; i++) {
+                temp = matrice[i][i];
+                elementi[j] = temp;
+                j++;
+            }
+        } else {
+            throw new Exception("Dimensione non uguale a 2!");
         }
 
         return elementi;
@@ -130,17 +173,22 @@ public class MatriceQuadrataWrapper {
      *
      * @return
      */
-    public Integer[] elementiDiagonaleSecondaria() {
+    public Integer[] elementiDiagonaleSecondaria() throws Exception {
         Integer[] elementi = new Integer[matrice.length];
-        Integer temp = 0;
-        Integer j = matrice.length - 1;
-        Integer k = 0;
 
-        for (Integer i = 0; i < matrice.length; i++) {
-            temp = matrice[i][j];
-            elementi[k] = temp;
-            j--;
-            k++;
+        if (n == 2) {
+            Integer temp = 0;
+            Integer j = matrice.length - 1;
+            Integer k = 0;
+
+            for (Integer i = 0; i < matrice.length; i++) {
+                temp = matrice[i][j];
+                elementi[k] = temp;
+                j--;
+                k++;
+            }
+        } else {
+            throw new Exception("Dimensione non uguale a 2!");
         }
 
         return elementi;
@@ -151,12 +199,22 @@ public class MatriceQuadrataWrapper {
      *
      * @return
      */
-    public Integer determinante() {
+    public Integer determinante() throws Exception {
         Integer determinante = 0;
 
         determinante = (elementiDiagonalePrincipale()[0] * elementiDiagonalePrincipale()[1]) - (elementiDiagonaleSecondaria()[0] * elementiDiagonaleSecondaria()[1]);
 
         return determinante;
+    }
+    
+    public static void main(String[] args) {
+        try{
+            MatriceQuadrataWrapper mqw = new MatriceQuadrataWrapper(3);
+            mqw.caricaRandom();
+            System.out.println(mqw.determinante());
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
     }
 
 }
