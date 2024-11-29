@@ -207,6 +207,10 @@ public class MatriceQuadrataWrapper {
         return determinante;
     }
     
+    public boolean verificaUguaglianza(){
+        return true;
+    }
+    
     public static void main(String[] args) {
         try{
             MatriceQuadrataWrapper mqw = new MatriceQuadrataWrapper(3);
