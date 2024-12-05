@@ -12,11 +12,12 @@ public class MatriceQuadrataWrapper {
 
     private Integer[][] matrice;
     private Integer n;
+    public Integer numeroIstanze;
 
     public MatriceQuadrataWrapper() {
     }
 
-    MatriceQuadrataWrapper(Integer n) throws Exception {
+    public MatriceQuadrataWrapper(Integer n) throws Exception {
         if (n != null) {
             if (n >= 2) {
                 this.n = n;
@@ -27,6 +28,21 @@ public class MatriceQuadrataWrapper {
         } else {
             throw new Exception("n deve essere diverso da null");
         }
+
+        numeroIstanze++;
+    }
+
+    public MatriceQuadrataWrapper(MatriceQuadrataWrapper mqw) {
+        n = mqw.n;
+        matrice = new Integer[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrice[i][j] = mqw.matrice[i][j];
+            }
+        }
+
+        numeroIstanze++;
     }
 
     /**
@@ -52,8 +68,16 @@ public class MatriceQuadrataWrapper {
      *
      * @param n
      */
-    public void setN(Integer n) {
-        this.n = n;
+    public void setN(Integer n) throws Exception {
+        if (n != null) {
+            if (n >= 2) {
+                this.n = n;
+            } else {
+                throw new Exception("n deve essere > 2");
+            }
+        } else {
+            throw new Exception("n deve essere diverso da null");
+        }
     }
 
     /**
@@ -62,17 +86,17 @@ public class MatriceQuadrataWrapper {
     public void caricaRandom() {
         Random r = new Random();
 
-        boolean[] usati = new boolean[100];  
+        boolean[] usati = new boolean[100];
 
         for (int i = 0; i < matrice.length; i++) {
             for (int j = 0; j < matrice[0].length; j++) {
                 int numeroCasuale;
                 do {
-                    numeroCasuale = r.nextInt(99) + 1;  
-                } while (usati[numeroCasuale]);  
+                    numeroCasuale = r.nextInt(99) + 1;
+                } while (usati[numeroCasuale]);
 
                 matrice[i][j] = numeroCasuale;
-                usati[numeroCasuale] = true;  
+                usati[numeroCasuale] = true;
             }
         }
     }
@@ -206,17 +230,32 @@ public class MatriceQuadrataWrapper {
 
         return determinante;
     }
-    
-    public boolean verificaUguaglianza(){
-        return true;
+
+    public boolean verificaUguaglianza(MatriceQuadrataWrapper mqw) throws Exception {
+        boolean rit = true;
+
+        if (n != mqw.n) {
+            throw new Exception("Matrici di lunghezza diversa");
+        } else {
+            for (int i = 0; i < matrice.length; i++) {
+                for (int j = 0; j < matrice.length; j++) {
+                    if (matrice[i][j] != mqw.matrice[i][j]) {
+                        rit = false;
+                    }
+                }
+            }
+        }
+
+        return rit;
     }
-    
+
     public static void main(String[] args) {
-        try{
-            MatriceQuadrataWrapper mqw = new MatriceQuadrataWrapper(3);
+        Integer ogg = 3;
+        try {
+            MatriceQuadrataWrapper mqw = new MatriceQuadrataWrapper(ogg);
             mqw.caricaRandom();
             System.out.println(mqw.determinante());
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
