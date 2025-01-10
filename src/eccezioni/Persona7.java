@@ -206,7 +206,7 @@ public class Persona7 {
         return numeroIstanze;
     }
 
-    public Integer calcolaEta() throws Exception {
+    public Integer calcolaEta(){
         Integer eta;
         String[] str = new String[3];
 
@@ -229,7 +229,7 @@ public class Persona7 {
     public Boolean verificaOmonimia(Persona7 persona) {
         boolean rit = false;
 
-        if (persona.nome.equals(nome)) {
+        if (persona.nome.equals(nome) && persona.cognome.equals(cognome)) {
             rit = true;
         }
 
