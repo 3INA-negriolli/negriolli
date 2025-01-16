@@ -14,7 +14,7 @@ public class Persona7 {
     private Double altezza;
     private String cognome;
     private String nome;
-    private Float peso;
+    private Double peso;
     private String dataDiNascita;
     private String email;
     private String password;
@@ -24,7 +24,7 @@ public class Persona7 {
         numeroIstanze++;
     }
 
-    public Persona7(Double altezza, String cognome, String nome, Float peso, String dataDiNascita, String email, String password) throws Exception {
+    public Persona7(Double altezza, String cognome, String nome, Double peso, String dataDiNascita, String email, String password) throws Exception {
         setAltezza(altezza);
         setCognome(cognome);
         setNome(nome);
@@ -105,11 +105,11 @@ public class Persona7 {
         }
     }
 
-    public Float getPeso() {
+    public Double getPeso() {
         return peso;
     }
 
-    public void setPeso(Float peso) throws Exception {
+    public void setPeso(Double peso) throws Exception {
         if (peso == null) {
             throw new Exception("Nullo");
         } else {

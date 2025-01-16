@@ -58,7 +58,7 @@ public class Citta {
     }
 
     public void setSuperficie(String superficie) throws Exception {
-        if (superficie != null || superficie.length() > 0) {
+        if (superficie != null && superficie.length() > 0) {
             if (superficie.matches("^[0-9]+,[0-9]{1,3}km$")) {
                 this.superficie = superficie;
             } else {
@@ -75,11 +75,10 @@ public class Citta {
     }
 
     public void setSindaco(Persona7 sindaco) throws Exception {
-        if (!sindaco.equals(null)) {
-            this.sindaco.equals(sindaco);
-        } else {
-            throw new Exception("Nullo");
+        if (sindaco == null) {
+            throw new Exception("Sindaco nullo");
         }
+        this.sindaco = sindaco;
     }
 
     public Persona7[] getAbitanti() {
@@ -87,18 +86,27 @@ public class Citta {
     }
 
     public void setAbitanti(Persona7[] abitanti) throws Exception {
+        if (abitanti == null || abitanti.length == 0) {
+            throw new Exception("Array abitanti nullo o vuoto");
+        }
+
+        this.abitanti = new Persona7[abitanti.length];
+
         for (int i = 0; i < abitanti.length; i++) {
             if (abitanti[i] == null) {
-                throw new Exception("Nullo");
+                throw new Exception("Abitante nullo");
             } else {
-                this.abitanti[i].equals(abitanti[i]);
+                this.abitanti[i] = abitanti[i];
             }
         }
     }
 
     public Double densitaPopolazione() {
         Double superficieDb;
+
+        superficie = superficie.replace(",", ".");
         String[] s = superficie.split("k");
+
         superficieDb = Double.parseDouble(s[0]);
 
         Double densita = abitanti.length / superficieDb;
@@ -121,13 +129,13 @@ public class Citta {
 
     public Integer numeroOmonimi() {
         Integer nOmonimi = 0;
-        int j = 1;
 
         for (int i = 0; i < abitanti.length; i++) {
-            if (abitanti[i].getNome().equals(abitanti[j].getNome())) {
-                nOmonimi++;
+            for (int j = i + 1; j < abitanti.length; j++) {
+                if (abitanti[i].getNome().equals(abitanti[j].getNome()) && abitanti[i].getCognome().equals(abitanti[j].getCognome())) {
+                    nOmonimi++;
+                }
             }
-            j++;
         }
 
         return nOmonimi;
@@ -148,13 +156,22 @@ public class Citta {
         Persona7 sindaco = new Persona7();
 
         try {
+            Persona7 p1 = new Persona7(1.50, "Sansoni", "Manuel", 62.8, "01/01/2000", "manu@gmail.com", "Luca007$");
+            Persona7 p2 = new Persona7(1.50, "Sansoni", "Manuel", 62.8, "01/01/2000", "manu@gmail.com", "Luca007$");
+
+            Persona7[] abitanti = {p1, p2};
+
+            ct.setAbitanti(abitanti);
             sindaco.setNome("Filippo");
             sindaco.setCognome("Mastroianni");
             ct.setSuperficie("123,45km");
             ct.setNome("Trento");
-            
-            //ct.setSindaco(sindaco);
-            //ct.info();
+            ct.setSindaco(sindaco);
+
+            System.out.println(ct.info());
+            System.out.println("Densità di popolazione: " + ct.densitaPopolazione());
+            System.out.println("Età media: " + ct.mediaEta());
+            System.out.println("Numero di omonimi: " + ct.numeroOmonimi());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
