@@ -189,7 +189,6 @@ public class DataEasy {
     }
 
     @Override
-
     public String toString() {
         String testo = "";
 
@@ -200,11 +199,11 @@ public class DataEasy {
 
     public static void main(String[] args) {
         try {
-            DataEasy dt = new DataEasy("16/01/2028");
+            DataEasy dt = new DataEasy("16/01/2025");
 
             System.out.println(dt.toString());
         } catch (Exception ex) {
-            Logger.getLogger(DataEasy.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
         }
     }
 }

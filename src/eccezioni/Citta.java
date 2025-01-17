@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * @author luca.negriolli 4INA
  * @version 1.0
  */
-public class Citta {
+public class Citta extends Persona7{
 
     private String nome;
     private String superficie;
