@@ -152,7 +152,7 @@ public class DataEasy {
         return giornoSettimana;
     }
 
-    public Integer differenzaInGiorni(DataEasy dataAntecedente, DataEasy dataSuccessiva) {
+    public static Integer differenzaInGiorni(DataEasy dataAntecedente, DataEasy dataSuccessiva) {
         LocalDate data1 = LocalDate.of(dataAntecedente.getAnno(), dataAntecedente.getMese(), dataAntecedente.getGiorno());
         LocalDate data2 = LocalDate.of(dataSuccessiva.getAnno(), dataSuccessiva.getMese(), dataSuccessiva.getGiorno());
 
@@ -161,7 +161,7 @@ public class DataEasy {
         return (int) differenza;
     }
 
-    public Integer differenzaInSettimane(DataEasy dataAntecedente, DataEasy dataSuccessiva) {
+    public static Integer differenzaInSettimane(DataEasy dataAntecedente, DataEasy dataSuccessiva) {
         LocalDate data1 = LocalDate.of(dataAntecedente.getAnno(), dataAntecedente.getMese(), dataAntecedente.getGiorno());
         LocalDate data2 = LocalDate.of(dataSuccessiva.getAnno(), dataSuccessiva.getMese(), dataSuccessiva.getGiorno());
 
@@ -170,7 +170,7 @@ public class DataEasy {
         return (int) differenza;
     }
 
-    public Integer differenzaInMesi(DataEasy dataAntecedente, DataEasy dataSuccessiva) {
+    public static Integer differenzaInMesi(DataEasy dataAntecedente, DataEasy dataSuccessiva) {
         LocalDate data1 = LocalDate.of(dataAntecedente.getAnno(), dataAntecedente.getMese(), dataAntecedente.getGiorno());
         LocalDate data2 = LocalDate.of(dataSuccessiva.getAnno(), dataSuccessiva.getMese(), dataSuccessiva.getGiorno());
 
@@ -179,13 +179,19 @@ public class DataEasy {
         return (int) differenza;
     }
 
-    public Integer differenzaInAnni(DataEasy dataAntecedente, DataEasy dataSuccessiva) {
+    public static Integer differenzaInAnni(DataEasy dataAntecedente, DataEasy dataSuccessiva) {
         LocalDate data1 = LocalDate.of(dataAntecedente.getAnno(), dataAntecedente.getMese(), dataAntecedente.getGiorno());
         LocalDate data2 = LocalDate.of(dataSuccessiva.getAnno(), dataSuccessiva.getMese(), dataSuccessiva.getGiorno());
 
         long differenza = ChronoUnit.YEARS.between(data1, data2);
 
         return (int) differenza;
+    }
+    
+    public static String differenzaInGiorniMesiAnni(DataEasy dataAntecedente, DataEasy dataSuccessiva) {
+        return "Intervallo di tempo: \n" + " - Giorni: " + differenzaInGiorni(dataAntecedente, dataSuccessiva)
+                + "\n - Mesi: " + differenzaInMesi(dataAntecedente, dataSuccessiva)
+                + "\n - Anni: " + differenzaInAnni(dataAntecedente, dataSuccessiva);
     }
 
     @Override
