@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+import eccezioni.DataEasy;
 
 /**
  *
@@ -36,8 +37,8 @@ public class Persona8A {
         setPassword(password);
         numeroIstanze++;
     }
-    
-    public Persona8A(Persona8A p) throws Exception{
+
+    public Persona8A(Persona8A p) throws Exception {
         setAltezza(p.altezza);
         setCognome(p.cognome);
         setNome(p.nome);
@@ -139,40 +140,14 @@ public class Persona8A {
     }
 
     public void setDataDiNascita(String dataDiNascita) throws Exception {
-        if (dataDiNascita == null) {
-            throw new Exception("Nulla");
-        } else {
-            if (!Pattern.matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}", dataDiNascita)) {
-                throw new Exception("Sintassi Errata!");
-            } else {
-                String[] str = dataDiNascita.split("/");
+        DataEasy data = new DataEasy(dataDiNascita);
+        DataEasy dataAttuale = new DataEasy();
 
-                GregorianCalendar dataOdierna = new GregorianCalendar();
-                Integer annoAttuale = dataOdierna.get(Calendar.YEAR);
-                Integer meseAttuale = dataOdierna.get(Calendar.MONTH) + 1;
-                Integer giornoAttuale = dataOdierna.get(Calendar.DAY_OF_MONTH);
-
-                Integer giorno = Integer.parseInt(str[0]);
-                Integer mese = Integer.parseInt(str[1]);
-                Integer anno = Integer.parseInt(str[2]);
-
-                if (anno > annoAttuale) {
-                    throw new Exception("La data inserita supera la data odierna");
-                } else {
-                    if (anno == annoAttuale) {
-                        if (mese > meseAttuale) {
-                            throw new Exception("La data inserita supera la data odierna");
-                        } else if (mese == meseAttuale && giorno > giornoAttuale) {
-                            throw new Exception("La data inserita supera la data odierna");
-                        } else {
-                            this.dataDiNascita = dataDiNascita;
-                        }
-                    } else {
-                        this.dataDiNascita = dataDiNascita;
-                    }
-                }
-            }
-        }
+        if(DataEasy.differenzaInGiorni(data, dataAttuale ) > 0)
+            throw new Exception("Data errata");
+        else
+            this.dataDiNascita = data.getData();
+        
     }
 
     public String getEmail() {
@@ -223,18 +198,14 @@ public class Persona8A {
         Integer eta = 0;
 
         try {
-
-            String[] str = new String[3];
-
+            String[] str = new String[3]; 
+            
             str = dataDiNascita.split("/");
-
-            GregorianCalendar dataOdierna = new GregorianCalendar();
-            Integer annoAttuale = dataOdierna.get(Calendar.YEAR);
-            Integer meseAttuale = dataOdierna.get(Calendar.MONTH) + 1;
-            Integer giornoAttuale = dataOdierna.get(Calendar.DAY_OF_MONTH);
+            
+            DataEasy dataOdierna = new DataEasy();
 
             DataEasy dataAntecedente = new DataEasy(Integer.parseInt(str[0]), Integer.parseInt(str[1]), Integer.parseInt(str[2]));
-            DataEasy dataSuccessiva = new DataEasy(giornoAttuale, meseAttuale, annoAttuale);
+            DataEasy dataSuccessiva = new DataEasy(dataOdierna.getGiorno(), dataOdierna.getMese(), dataOdierna.getAnno());
             eta = DataEasy.differenzaInAnni(dataAntecedente, dataSuccessiva);
 
         } catch (Exception ex) {

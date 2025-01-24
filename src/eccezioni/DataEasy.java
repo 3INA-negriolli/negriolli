@@ -7,13 +7,15 @@ import java.time.format.TextStyle;
 import java.util.Locale;
 import java.time.temporal.ChronoUnit;
 import java.time.Period;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
 
 /**
- * ...
- * @author luca.negriolli 4INA
+ * ... @author luca.negriolli 4INA
+ *
  * @version 1.0
  */
 public class DataEasy {
@@ -24,6 +26,14 @@ public class DataEasy {
     private Integer anno;
 
     public DataEasy() {
+        GregorianCalendar dataOdierna = new GregorianCalendar();
+        Integer anno = dataOdierna.get(Calendar.YEAR);
+        Integer mese = dataOdierna.get(Calendar.MONTH) + 1;
+        Integer giorno = dataOdierna.get(Calendar.DAY_OF_MONTH);
+        
+        LocalDate data = LocalDate.of(this.anno, this.mese, this.giorno);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        this.data = data.format(formatter);
     }
 
     public DataEasy(String data) throws Exception {
@@ -60,21 +70,12 @@ public class DataEasy {
             if (!Pattern.matches("^[0-9]{2}/[0-9]{2}/[0-9]{4}", data)) {
                 throw new Exception("Sintassi Errata!");
             } else {
-                String[] s = data.split("/");
-                int giorno = Integer.parseInt(s[0]);
-                int mese = Integer.parseInt(s[1]);
-                int anno = Integer.parseInt(s[2]);
 
-                LocalDate dataInserita = LocalDate.of(anno, mese, giorno);
+                this.data = data;
+                this.giorno = giorno;
+                this.mese = mese;
+                this.anno = anno;
 
-                if (dataInserita.isAfter(dataOdierna)) {
-                    throw new Exception("Data Errata!");
-                } else {
-                    this.data = data;
-                    this.giorno = giorno;
-                    this.mese = mese;
-                    this.anno = anno;
-                }
             }
         }
     }
@@ -187,7 +188,7 @@ public class DataEasy {
 
         return (int) differenza;
     }
-    
+
     public static String differenzaInGiorniMesiAnni(DataEasy dataAntecedente, DataEasy dataSuccessiva) {
         return "Intervallo di tempo: \n" + " - Giorni: " + differenzaInGiorni(dataAntecedente, dataSuccessiva)
                 + "\n - Mesi: " + differenzaInMesi(dataAntecedente, dataSuccessiva)
