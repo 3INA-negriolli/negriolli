@@ -21,6 +21,10 @@ public class Studente1 extends Persona8A {
         setIsRipetente(isRipetente);
         setClasse(classe);
     }
+    
+    public String getSCUOLA(){
+        return SCUOLA;
+    }
 
     public Integer getClasse() {
         return classe;
@@ -107,16 +111,9 @@ public class Studente1 extends Persona8A {
     }
 
     public Boolean promuovi() {
-        Double media = 0.0;
         Boolean promosso = false;
 
-        for (int i = 0; i < voti.length; i++) {
-            media += voti[i];
-        }
-
-        media = media / voti.length;
-
-        if (media >= 5.75) {
+        if (mediaVoti() >= 5.75) {
             promosso = true;
         }
 
@@ -127,15 +124,8 @@ public class Studente1 extends Persona8A {
         Boolean promosso = false;
         if (numeroClassi != null) {
             if (numeroClassi >= 2 && numeroClassi <= 4) {
-                Double media = 0.0;
 
-                for (int i = 0; i < voti.length; i++) {
-                    media += voti[i];
-                }
-
-                media = media / voti.length;
-
-                if (media >= 7) {
+                if (mediaVoti() >= 7) {
                     promosso = true;
                 }
 
@@ -148,29 +138,55 @@ public class Studente1 extends Persona8A {
 
         return promosso;
     }
-    
-    //@override
-    public String info(){
+
+    @Override
+    public String info() {
         String testo = super.info();
-        
-        testo += "\n" + "Istituto " + SCUOLA + "\n" +
-                 "Classe: " + getClasse() + "\n";
-                
-        
+
+        testo += "\n" + "Istituto " + SCUOLA + "\n"
+                + "Classe: " + getClasse() + "\n";
+
         return testo;
     }
+
+    private Float votoMinore() {
+        Float voto = voti[0];
+        
+        for (int i = 0; i < voti.length; i++) {
+            if(voti[i] < voto){
+                voto = voti[i];
+            }
+        }
+        
+        return voto;
+    }
+
+    private Float votoMaggiore() {
+        Float voto = voti[0];
+        
+        for (int i = 0; i < voti.length; i++) {
+            if(voti[i] > voto){
+                voto = voti[i];
+            }
+        }
+        
+        return voto;
+    }
+
+    private Float mediaVoti() {
+        Float media = null;
+
+        for (int i = 0; i < voti.length; i++) {
+            media += voti[i];
+        }
+
+        media = media / voti.length;
+
+        return media;
+    }
     
-    /*
-    private Float votoMinore(){
+    public static void main(String[] args) {
         
     }
 
-    private Float votoMaggiore(){
-        
-    }
-    
-    private Float mediaVoti(){
-        
-    }
-    */
 }
