@@ -14,6 +14,7 @@ public class Studente1 extends Persona8A {
     private Float[] voti;
 
     public Studente1() throws Exception {
+        super();
     }
 
     public Studente1(Integer classe, Boolean isRipetente, Double altezza, String cognome, String nome, Double peso, String dataDiNascita, String email, String password) throws Exception {
@@ -21,8 +22,8 @@ public class Studente1 extends Persona8A {
         setIsRipetente(isRipetente);
         setClasse(classe);
     }
-    
-    public String getSCUOLA(){
+
+    public String getSCUOLA() {
         return SCUOLA;
     }
 
@@ -55,7 +56,7 @@ public class Studente1 extends Persona8A {
     }
 
     public Float[] getVoti() {
-        return voti;
+        return voti.clone();
     }
 
     public void setVoti(Float[] voti) throws Exception {
@@ -110,11 +111,17 @@ public class Studente1 extends Persona8A {
         }
     }
 
-    public Boolean promuovi() {
+    public Boolean promuovi() throws Exception {
         Boolean promosso = false;
 
+        if (classe == 5) {
+            throw new Exception("Non si può promuovere");
+        }
+
         if (mediaVoti() >= 5.75) {
+            setClasse(classe + 1);
             promosso = true;
+            setIsRipetente(false);
         }
 
         return promosso;
@@ -126,7 +133,9 @@ public class Studente1 extends Persona8A {
             if (numeroClassi >= 2 && numeroClassi <= 4) {
 
                 if (mediaVoti() >= 7) {
+                    setClasse(classe + numeroClassi);
                     promosso = true;
+                    setIsRipetente(false);
                 }
 
             } else {
@@ -151,25 +160,25 @@ public class Studente1 extends Persona8A {
 
     private Float votoMinore() {
         Float voto = voti[0];
-        
+
         for (int i = 0; i < voti.length; i++) {
-            if(voti[i] < voto){
+            if (voti[i] < voto) {
                 voto = voti[i];
             }
         }
-        
+
         return voto;
     }
 
     private Float votoMaggiore() {
         Float voto = voti[0];
-        
+
         for (int i = 0; i < voti.length; i++) {
-            if(voti[i] > voto){
+            if (voti[i] > voto) {
                 voto = voti[i];
             }
         }
-        
+
         return voto;
     }
 
@@ -184,9 +193,9 @@ public class Studente1 extends Persona8A {
 
         return media;
     }
-    
+
     public static void main(String[] args) {
-        
+
     }
 
 }

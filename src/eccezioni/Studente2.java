@@ -15,15 +15,18 @@ public class Studente2 extends Persona8A {
     private ArrayList<Float> voti;
 
     public Studente2() {
+        super();
+        this.voti = new ArrayList<>();
     }
 
     public Studente2(Integer classe, Boolean isRipetente, Double altezza, String cognome, String nome, Double peso, String dataDiNascita, String email, String password) throws Exception {
         super(altezza, cognome, nome, peso, dataDiNascita, email, password);
         setIsRipetente(isRipetente);
         setClasse(classe);
+        this.voti = new ArrayList<>();
     }
-    
-    public String getSCUOLA(){
+
+    public String getSCUOLA() {
         return SCUOLA;
     }
 
@@ -56,13 +59,13 @@ public class Studente2 extends Persona8A {
     }
 
     public ArrayList<Float> getVoti() {
-        return voti;
+        return (ArrayList<Float>) voti.clone();
     }
 
     public void setVoti(ArrayList<Float> voti) throws Exception {
         if (voti != null) {
             if (voti.size() != 0) {
-                this.voti = new ArrayList<>(voti);
+                this.voti = (ArrayList<Float>) voti.clone();
             } else {
                 throw new Exception("Array vuoto");
             }
@@ -73,8 +76,12 @@ public class Studente2 extends Persona8A {
 
     public void aggiungiVoto(Float voto) throws Exception {
         if (voto != null) {
-            if (voto >= 0 && voto <= 10) {
-                voti.add(voto);
+            if (voto >= 3 && voto <= 10) {
+                if (voto % 0.25 == 0) {
+                    voti.add(voto);
+                } else {
+                    throw new Exception("Voto non ammissibile");
+                }
             } else {
                 throw new Exception("Voto non ammissibile");
             }
@@ -85,8 +92,8 @@ public class Studente2 extends Persona8A {
 
     public void rimuoviVoto(Integer posizione) throws Exception {
         if (posizione != null) {
-            if (posizione >= 0 && posizione < voti.size()) {
-                voti.remove(posizione);
+            if (posizione >= 3 && posizione < voti.size()) {
+                voti.remove(Integer.valueOf(posizione));
             } else {
                 throw new Exception("Posizione errata");
             }
@@ -97,7 +104,7 @@ public class Studente2 extends Persona8A {
 
     public void rimuoviVoto(Float voto) throws Exception {
         if (voto != null) {
-            if (voto >= 0 && voto <= 10) {
+            if (voto >= 3 && voto <= 10) {
                 voti.remove(voto);
             } else {
                 throw new Exception("Voto errato");
@@ -135,11 +142,17 @@ public class Studente2 extends Persona8A {
         }
     }
 
-    public Boolean promuovi() {
+    public Boolean promuovi() throws Exception {
         Boolean promosso = false;
 
+        if (classe == 5) {
+            throw new Exception("Non si può promuovere");
+        }
+
         if (mediaVoti() >= 5.75) {
+            setClasse(classe + 1);
             promosso = true;
+            setIsRipetente(false);
         }
 
         return promosso;
@@ -151,7 +164,9 @@ public class Studente2 extends Persona8A {
             if (numeroClassi >= 2 && numeroClassi <= 4) {
 
                 if (mediaVoti() >= 7) {
+                    setClasse(classe + numeroClassi);
                     promosso = true;
+                    setIsRipetente(false);
                 }
 
             } else {
