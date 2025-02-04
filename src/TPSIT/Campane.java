@@ -4,12 +4,12 @@ package TPSIT;
  *
  * @author luca.negriolli
  */
-public class Campana extends Thread {
+public class Campane extends Thread {
 
     private String nomeCampana;
     private int intervallo;
 
-    public Campana(String nomeCampana, int intervallo) {
+    public Campane(String nomeCampana, int intervallo) {
         this.nomeCampana = nomeCampana;
         this.intervallo = intervallo;
     }
@@ -26,7 +26,5 @@ public class Campana extends Thread {
         }
     }
 
-    public static void main(String[] args) {
-        
-    }
+    
 }

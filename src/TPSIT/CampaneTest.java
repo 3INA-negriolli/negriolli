@@ -4,13 +4,13 @@ package TPSIT;
  *
  * @author luca.negriolli
  */
-public class SimulazioneCampane {
+public class CampaneTest {
 
     public static void main(String[] args) {
-        Campana campana1 = new Campana("Din", 1000); // suona
-        Campana campana2 = new Campana("Don", 1500); // suona
-        Campana campana3 = new Campana("Dan", 2000); // suona
-        Campana campana4 = new Campana("HIHIHA", 1500); // suona
+        Campane campana1 = new Campane("Din", 1000); // suona
+        Campane campana2 = new Campane("Don", 1500); // suona
+        Campane campana3 = new Campane("Dan", 2000); // suona
+        Campane campana4 = new Campane("HIHIHA", 1500); // suona
 
         campana1.start();
         campana2.start();
