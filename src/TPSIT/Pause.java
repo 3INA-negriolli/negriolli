@@ -10,6 +10,22 @@ package TPSIT;
  *
  * @author luca.negriolli
  */
-public class Pause {
-    
+public class Pause extends Thread {
+    private String messaggio;
+    private int pausa;
+
+    public Pause(String messaggio, int pausa) {
+        this.messaggio = messaggio;
+        this.pausa = pausa;
+    }
+
+    @Override
+    public void run() {
+        try {
+            System.out.println(messaggio);
+            Thread.sleep(pausa);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
