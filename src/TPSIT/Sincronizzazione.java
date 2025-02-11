@@ -24,11 +24,11 @@ public class Sincronizzazione extends Thread {
 
     @Override
     public void run() {
-        Random random = new Random();
-        int pausa = 1000 + random.nextInt(2000); // Random time between 1 and 3 seconds
+        Random random = new Random(); // Istanza per il numero casuale
+        int pausa = 1000 + random.nextInt(2000); // Genera un numero casuale tra 1000 e 3000
         try {
-            Thread.sleep(pausa);
-            System.out.println(nome + " ha finito!");
+            Thread.sleep(pausa); // Interrompe il thread per un pò
+            System.out.println(nome + " ha finito!"); // Stampa che ha finito
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
