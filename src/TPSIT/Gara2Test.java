@@ -10,11 +10,16 @@ package TPSIT;
  */
 public class Gara2Test {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Gara2 c1 = new Gara2("Rossi");
+        Gara2 c2 = new Gara2("Bianchi");
+        Gara2 c3 = new Gara2("Verdi");
+        Gara2 c4 = new Gara2("Neri");
+        
+        c1.start();
+        c2.start();
+        c3.start();
+        c4.start();
     }
     
 }
