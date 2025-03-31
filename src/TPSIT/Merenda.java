@@ -1,5 +1,6 @@
 package TPSIT;
 
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,11 +18,12 @@ import java.util.logging.Logger;
  *
  * @author luca.negriolli
  */
-public class Merenda extends Thread {
+public class Merenda implements Runnable {
 
     private String nome;
-    private int distanzaPercorsa = 0;
-    private final int TRAGUARDO = 100;
+    private int posizione = 0;
+    private static final int TRAGUARDO = 100;
+    private static boolean merendaPreso = false;
 
     public Merenda(String nome) {
         this.nome = nome;
@@ -29,15 +31,26 @@ public class Merenda extends Thread {
 
     @Override
     public void run() {
-        while (distanzaPercorsa < TRAGUARDO) {
-            try {
-                Thread.sleep(100);
-                distanzaPercorsa += (int) Math.random() * 9 + 1;
-                System.out.println(nome + " ha percorso " + distanzaPercorsa + "m");
-            } catch (InterruptedException ex) {
-                System.out.println(ex.getMessage());
+        System.out.println("E' partito " + nome + "!!!"); //Stampa che la persona è partita
+        Random random = new Random();
+
+        while (!merendaPreso) {
+            int passo = random.nextInt(10) + 1; //Fa random metri
+            posizione += passo; //Memorizzo di volta in volta i metri che fa
+            System.out.println(nome + " ha avanzato di " + passo + " metri. Totale: " + posizione + "m"); //Restituisco le informazioni
+
+            if (posizione >= TRAGUARDO && !merendaPreso) {
+                merendaPreso = true;
+                System.out.println(nome + " ha preso la merenda!!!");
+                break;
             }
 
+            System.out.println("Non ho finito, ma mi riposo un attimo !");
+            try {
+                Thread.sleep(random.nextInt(1000));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
