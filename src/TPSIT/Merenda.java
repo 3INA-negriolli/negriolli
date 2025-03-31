@@ -31,7 +31,7 @@ public class Merenda implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("E' partito " + nome + "!!!"); //Stampa che la persona è partita
+        System.out.println("E' partito " + nome); //Stampa che la persona è partita
         Random random = new Random();
 
         while (!merendaPreso) {
@@ -41,11 +41,10 @@ public class Merenda implements Runnable {
 
             if (posizione >= TRAGUARDO && !merendaPreso) {
                 merendaPreso = true;
-                System.out.println(nome + " ha preso la merenda!!!");
+                System.out.println(nome + " ha preso la merenda!");
                 break;
             }
 
-            System.out.println("Non ho finito, ma mi riposo un attimo !");
             try {
                 Thread.sleep(random.nextInt(1000));
             } catch (InterruptedException e) {
