@@ -7,7 +7,7 @@ package TPSIT;
  * processi pronti, l’output può variare. Possiamo dunque osservare un esempio
  * di modalità non deterministica.
  *
- * @author Utente
+ * @author luca.negriolli
  */
 public class CampaneAsincrone implements Runnable {
 
@@ -18,7 +18,7 @@ public class CampaneAsincrone implements Runnable {
     }
 
     @Override
-    public void run() {
+    public void run() { 
         for (int i = 0; i < 5; i++) { // Ogni campana suona 5 volte
             System.out.print(suono + " ");
             try {
